@@ -7,7 +7,7 @@ A new Flutter application.
 This project is a starting point for a Flutter application.
 
 
-<img width="50%" src="https://www.img.in.th/images/bfd9cbce716efe241af0fae74f8f869d.png"/>
+<img width="30%" src="https://www.img.in.th/images/bfd9cbce716efe241af0fae74f8f869d.png"/>
 
 A few resources to get you started if this is your first Flutter project:
 
