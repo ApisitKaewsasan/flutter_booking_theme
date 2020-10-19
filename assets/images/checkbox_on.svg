@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11">
+  <g id="_" data-name="+" transform="translate(-167.5 -281.955)">
+    <g id="Rectangle_1520" data-name="Rectangle 1520" transform="translate(167.5 281.955)" fill="none" stroke="#d65653" stroke-width="1">
+      <rect width="11" height="11" rx="4" stroke="none"/>
+      <rect x="0.5" y="0.5" width="10" height="10" rx="3.5" fill="none"/>
+    </g>
+    <path id="Icon_ionic-ios-checkmark" data-name="Icon ionic-ios-checkmark" d="M16.929,12.791l-.534-.549a.115.115,0,0,0-.085-.036h0a.11.11,0,0,0-.085.036l-3.7,3.726L11.18,14.623a.117.117,0,0,0-.17,0l-.54.54a.121.121,0,0,0,0,.173l1.7,1.7a.537.537,0,0,0,.355.173.563.563,0,0,0,.352-.167h0l4.054-4.075A.13.13,0,0,0,16.929,12.791Z" transform="translate(159.066 272.749)" fill="#d65653"/>
+  </g>
+</svg>

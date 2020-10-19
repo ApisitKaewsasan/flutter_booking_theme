@@ -1,0 +1,7 @@
+#include "Generated.xcconfig"
+
+
+FLUTTER_TARGET=lib/config/Main_production.dart
+ASSET_PREFIX=production
+BUNDLE_NAME=DS BooKing
+APP_SUFFIX=com.dotsocket.dsBookApp

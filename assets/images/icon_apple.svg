@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="apple" transform="translate(7 7)">
+    <g id="Rectangle_1503" data-name="Rectangle 1503" transform="translate(-7 -7)" fill="none" stroke="#858585" stroke-width="1" opacity="0.5">
+      <rect width="40" height="40" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="39" rx="2.5" fill="none"/>
+    </g>
+    <path id="Icon_awesome-apple" data-name="Icon awesome-apple" d="M11.15,10.425A3.224,3.224,0,0,1,12.877,7.5a3.711,3.711,0,0,0-2.925-1.54c-1.226-.1-2.566.715-3.057.715-.518,0-1.706-.68-2.639-.68C2.329,6.022.281,7.527.281,10.591a8.608,8.608,0,0,0,.5,2.8c.442,1.268,2.038,4.376,3.7,4.324C5.351,17.7,5.966,17.1,7.1,17.1c1.1,0,1.668.618,2.639.618,1.679-.024,3.122-2.849,3.544-4.12a3.424,3.424,0,0,1-2.131-3.174ZM9.2,4.754a3.253,3.253,0,0,0,.829-2.5A3.662,3.662,0,0,0,7.679,3.455,3.3,3.3,0,0,0,6.8,5.939,2.9,2.9,0,0,0,9.2,4.754Z" transform="translate(6.719 2.75)"/>
+  </g>
+</svg>

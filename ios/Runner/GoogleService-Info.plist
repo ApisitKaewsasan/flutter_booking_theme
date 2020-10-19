@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>894633863345-oh4e673mropdr6bmhkm8jqtc0f6846da.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.894633863345-oh4e673mropdr6bmhkm8jqtc0f6846da</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>894633863345-3i6ugj8sm9f32vg3oj0nb8uifmcl3phg.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAapl1IGWoD6YynCuqKDv26RpmKfIoIyb0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>894633863345</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ratchakarnjob.ratchakarnjob</string>
+	<key>PROJECT_ID</key>
+	<string>ratchakarnjobs-f4505</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ratchakarnjobs-f4505.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:894633863345:ios:b1d1336e0f9fc05b8cda90</string>
+	<key>DATABASE_URL</key>
+	<string>https://ratchakarnjobs-f4505.firebaseio.com</string>
+
+</dict>
+</plist>

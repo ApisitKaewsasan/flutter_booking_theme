@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="facebook" transform="translate(7 7)">
+    <g id="Rectangle_1503" data-name="Rectangle 1503" transform="translate(-7 -7)" fill="none" stroke="#858585" stroke-width="1" opacity="0.5">
+      <rect width="40" height="40" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="39" rx="2.5" fill="none"/>
+    </g>
+    <rect id="Rectangle_1502" data-name="Rectangle 1502" width="20" height="20" rx="3" transform="translate(3 3)" fill="#3b5998"/>
+    <path id="Path_167" data-name="Path 167" d="M113.939,74.888H115.6V72.547h-1.953v.008c-2.367.08-2.852,1.349-2.895,2.682h0v1.169h-1.612V78.7h1.612v6.146h2.429V78.7h1.99l.384-2.293h-2.373V75.7A.77.77,0,0,1,113.939,74.888Z" transform="translate(-99.368 -64.972)" fill="#fff"/>
+  </g>
+</svg>

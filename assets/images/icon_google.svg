@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="google" transform="translate(-152 -481)">
+    <g id="Rectangle_1503" data-name="Rectangle 1503" transform="translate(152 481)" fill="none" stroke="#858585" stroke-width="1" opacity="0.5">
+      <rect width="40" height="40" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="39" rx="2.5" fill="none"/>
+    </g>
+    <path id="Path_188" data-name="Path 188" d="M2.879,142.61,2.427,144.3l-1.653.035a6.506,6.506,0,0,1-.048-6.065h0l1.471.27L2.842,140a3.876,3.876,0,0,0,.036,2.61Z" transform="translate(166 360.24)" fill="#fbbb00"/>
+    <path id="Path_189" data-name="Path 189" d="M267.867,208.176a6.493,6.493,0,0,1-2.315,6.278h0l-1.853-.095-.262-1.637a3.871,3.871,0,0,0,1.666-1.977h-3.473v-2.569h6.239Z" transform="translate(-88.99 292.106)" fill="#518ef8"/>
+    <path id="Path_190" data-name="Path 190" d="M40.3,313.119h0a6.5,6.5,0,0,1-9.787-1.987l2.1-1.723a3.863,3.863,0,0,0,5.566,1.978Z" transform="translate(136.265 193.441)" fill="#28b446"/>
+    <path id="Path_191" data-name="Path 191" d="M38.539,1.5l-2.1,1.723A3.862,3.862,0,0,0,30.74,5.24L28.624,3.508h0A6.5,6.5,0,0,1,38.539,1.5Z" transform="translate(138.102 495)" fill="#f14336"/>
+  </g>
+</svg>

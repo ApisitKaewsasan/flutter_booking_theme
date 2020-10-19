@@ -1,0 +1,7 @@
+#include "Generated.xcconfig"
+
+
+FLUTTER_TARGET=lib/config/Main_staging.dart
+ASSET_PREFIX=staging
+BUNDLE_NAME=(Stag)DSBooKing
+APP_SUFFIX=com.dotsocket.dsBookApp.stag

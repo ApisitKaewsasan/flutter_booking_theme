@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-823296660/android.file_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-823296660/android.file_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1622326066/android.flutter_facebook_login.iml" filepath="$PROJECT_DIR$/.idea/modules/1622326066/android.flutter_facebook_login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2007255486/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/-2007255486/android.flutter_plugin_android_lifecycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1092106581/android.google_sign_in.iml" filepath="$PROJECT_DIR$/.idea/modules/-1092106581/android.google_sign_in.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/697241201/android.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/697241201/android.image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1783324224/android.sign_in_with_apple.iml" filepath="$PROJECT_DIR$/.idea/modules/1783324224/android.sign_in_with_apple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1904565293/android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-1904565293/android.sqflite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/484215403/io.flutter.plugins.pathprovider.android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/484215403/io.flutter.plugins.pathprovider.android.path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1230768071/io.flutter.plugins.sharedpreferences.android.shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/-1230768071/io.flutter.plugins.sharedpreferences.android.shared_preferences.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <g id="baht_icon" data-name="baht icon" transform="translate(-20.825 -118)">
+    <path id="Icon_material-radio-button-unchecked" data-name="Icon material-radio-button-unchecked" d="M11.5,3A8.5,8.5,0,1,0,20,11.5,8.5,8.5,0,0,0,11.5,3Zm0,15.3a6.8,6.8,0,1,1,6.8-6.8A6.8,6.8,0,0,1,11.5,18.3Z" transform="translate(40.825 115) rotate(90)" fill="#d65653"/>
+    <text id="_" data-name="฿" transform="translate(25.825 130)" fill="#d65653" font-size="11" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="0" y="0">฿</tspan></text>
+  </g>
+</svg>
