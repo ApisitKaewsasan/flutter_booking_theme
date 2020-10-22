@@ -5,6 +5,7 @@ import 'package:ds_book_app/app/bloc/User_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppComponent.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/Checkin.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
@@ -14,8 +15,10 @@ import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/app/ui/page/SignInPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,105 +68,103 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
 
   @override
   Widget build(BuildContext context) {
+
     _init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(header_type: Header_Type.barlogo,Title: Env.value.appName),
         body: Container(
-          color: Colors.white,
-          child: SingleChildScrollView(
-            child: Column(children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.only(top: 80),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('When are you',
-                        style: GoogleFonts.kanit(
-                            fontSize: 30, fontStyle: FontStyle.normal)),
-                    Text('planning to visit ?',
-                        style: GoogleFonts.kanit(
-                            fontSize: 30,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400,
-                            color: Env.value.secondaryColor)),
-                    SizedBox(height: 20),
-                    GestureDetector(
-                      child: Container(
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, top: 5, bottom: 5),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Color(ColorUtils.hexToInt('#C5C5C5'))),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: StreamBuilder(
-                            stream: bloc_check.feedList,
-                            builder: (context,snapshot){
-                              List<Checkin> item = snapshot.data;
-                              return Row(
-                                children: [
-                                  Box_text(
-                                      title: "Check-in",
-                                      datetime: FunctionHelper.ReportDateTwo(date: item!=null?item[0].checkin:bloc_check.selectedPeriodStart.toString()),
-                                      icon: AntDesign.calendar),
-                                  Box_text(
-                                      title: "Check-Out",
-                                      datetime: FunctionHelper.ReportDateTwo(date: item!=null?item[0].checkout:bloc_check.selectedPeriodEnd.toString()),
-                                      icon: Icons.arrow_forward)
-                                ],
-                              );
-                            },
-                          )
-                      ),
-
-                      onTap: ()=> Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: CheckinPage())),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      child: Container(
+          child: ListView(children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.only(top: 80),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(LocaleKeys.startup_When_are_you.tr(),
+                      style: GoogleFonts.kanit(
+                          fontSize: 30, fontStyle: FontStyle.normal,color: ThemeColor.fontprimaryColor(context))),
+                  Text(LocaleKeys.startup_planning_visit.tr(),
+                      style: GoogleFonts.kanit(
+                          fontSize: 30,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeColor.secondaryColor(context))),
+                  SizedBox(height: 20),
+                  GestureDetector(
+                    child: Container(
                         padding: EdgeInsets.only(
                             left: 10, right: 10, top: 5, bottom: 5),
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: Color(ColorUtils.hexToInt('#C5C5C5'))),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Guests_From(),
-                      ),
+                        child: StreamBuilder(
+                          stream: bloc_check.feedList,
+                          builder: (context,snapshot){
+                            List<Checkin> item = snapshot.data;
+                            return Row(
+                              children: [
+                                Box_text(
+                                    title: LocaleKeys.startup_check_in.tr(),
+                                    datetime: FunctionHelper.ReportDateTwo(date: item!=null?item[0].checkin:bloc_check.selectedPeriodStart.toString()),
+                                    icon: AntDesign.calendar),
+                                Box_text(
+                                    title: LocaleKeys.startup_check_out.tr(),
+                                    datetime: FunctionHelper.ReportDateTwo(date: item!=null?item[0].checkout:bloc_check.selectedPeriodEnd.toString()),
+                                    icon: Icons.arrow_forward)
+                              ],
+                            );
+                          },
+                        )
+                    ),
 
-                      onTap: () => Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: GuestsPage())),
+                    onTap: ()=> Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: CheckinPage())),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color(ColorUtils.hexToInt('#C5C5C5'))),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Guests_From(),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Expanded(
-                                child: FlatButton(
-                                  height: 50,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  color: Env.value.secondaryColor,
-                                  onPressed: () {
-                                    Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SelectRoom()));
-                                  },
-                                  child: Text("Search",
-                                      style: GoogleFonts.kanit(
-                                          fontSize: 14,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.white)),
-                                )))
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],),
-          ),
+
+                    onTap: () => Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: GuestsPage())),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                          child: Expanded(
+                              child: FlatButton(
+                                height: 50,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                color: ThemeColor.secondaryColor(context),
+                                onPressed: () {
+                                  Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SelectRoom()));
+                                },
+                                child: Text(LocaleKeys.startup_search.tr(),
+                                    style: GoogleFonts.kanit(
+                                        fontSize: 14,
+                                        fontStyle: FontStyle.normal,
+                                        color: Colors.white)),
+                              )))
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],),
         ));
   }
 
@@ -171,7 +172,7 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
     return Expanded(
         child: Row(
       children: <Widget>[
-        Icon(icon, color: Env.value.secondaryColor),
+        Icon(icon, color: ThemeColor.secondaryColor(context)),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Column(
@@ -181,12 +182,12 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
                   style: GoogleFonts.kanit(
                       fontSize: 16,
                       fontStyle: FontStyle.normal,
-                      color: Colors.black)),
+                      color: ThemeColor.fontprimaryColor(context))),
               Text(datetime,
                   style: GoogleFonts.kanit(
                       fontSize: 14,
                       fontStyle: FontStyle.normal,
-                      color: Color(ColorUtils.hexToInt("#C5C5C5"))))
+                        color: ThemeColor.fontFadedColor(context)))
             ],
           ),
         )
@@ -197,15 +198,15 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
   Widget Guests_From() {
     return Row(
       children: <Widget>[
-        Icon(Icons.person, color: Env.value.secondaryColor),
+        Icon(Icons.person, color: ThemeColor.secondaryColor(context)),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Guests",
+              Text(LocaleKeys.startup_guests.tr(),
                   style: TextStyle(
-                      fontSize: 16, fontFamily: 'Kanit', color: Colors.black)),
+                      fontSize: 16, fontFamily: 'Kanit', color: ThemeColor.fontprimaryColor(context))),
               StreamBuilder(
                 stream: bloc_form.feedList,
                 builder: (context, snapshot) {
@@ -215,13 +216,13 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
                         style: GoogleFonts.kanit(
                             fontSize: 14,
                             fontStyle: FontStyle.normal,
-                            color: Color(ColorUtils.hexToInt("#C5C5C5"))));
+                            color: ThemeColor.fontFadedColor(context)));
                   }else{
                     return Text("0 rooms, 0 adults, 0 children",
                         style: GoogleFonts.kanit(
                             fontSize: 14,
                             fontStyle: FontStyle.normal,
-                            color: Color(ColorUtils.hexToInt("#C5C5C5"))));
+                            color: ThemeColor.fontFadedColor(context)));
                   }
 
                 },
@@ -246,7 +247,7 @@ class _StartUpPageState extends State<StartUpPage> with RouteAware{
       children += listItem[i].children_count;
     }
 
-    return "${room} rooms, ${adults} adults, ${children} children";
+    return "${room} ${LocaleKeys.startup_room.tr()}, ${adults} ${LocaleKeys.startup_adults.tr()}, ${children} ${LocaleKeys.startup_children.tr()}";
   }
 
 }

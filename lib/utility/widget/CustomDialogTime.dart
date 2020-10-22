@@ -1,10 +1,13 @@
 import 'package:basic_utils/basic_utils.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:intl/intl.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CustomDialogTime extends StatefulWidget {
 
@@ -61,7 +64,7 @@ class _CustomDialogTimeState extends State<CustomDialogTime>
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            color: Env.value.secondaryColor,
+            color: ThemeColor.DialogHeaderprimary(context),
             padding: EdgeInsets.only(left: 20, bottom: 15, top: 15),
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -71,12 +74,12 @@ class _CustomDialogTimeState extends State<CustomDialogTime>
                     _dateTime.minute.toString().padLeft(2, '0') +
                     ' ' +
                     _typeTime.toString(),
-                style: GoogleFonts.kanit(color: Colors.white, fontSize: 24),
+                style: GoogleFonts.kanit(color: ThemeColor.ButtonColor(context), fontSize: 24),
               ),
             ),
           ),
           Container(
-            color: Colors.white,
+            color: ThemeColor.primaryColor(context),
             padding: EdgeInsets.all(40),
             child: TimePickerSpinner(
               is24HourMode: false,
@@ -84,9 +87,9 @@ class _CustomDialogTimeState extends State<CustomDialogTime>
               itemHeight: 50,
               isForce2Digits: true,
               normalTextStyle: GoogleFonts.kanit(
-                  fontSize: 22, color: Colors.black.withOpacity(0.5)),
+                  fontSize: 22, color: ThemeColor.fontFadedColor(context)),
               highlightedTextStyle: GoogleFonts.kanit(
-                  fontSize: 22, color: Env.value.secondaryColor),
+                  fontSize: 22, color: ThemeColor.secondaryColor(context)),
               onTimeChange: (time) {
                 setState(() {
                   _typeTime = DateFormat.d().add_jm().format(time).split(" ")[2];
@@ -97,16 +100,16 @@ class _CustomDialogTimeState extends State<CustomDialogTime>
             ),
           ),
           Container(
-            color: Colors.white,
-            margin: EdgeInsets.only(bottom: 20, right: 35),
+            color: ThemeColor.primaryColor(context),
+           padding: EdgeInsets.only(bottom: 20, right: 35),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
                   child: Text(
-                    "CANCEL",
+                    LocaleKeys.payment_cancel.tr(),
                     style: GoogleFonts.kanit(
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: (){
@@ -116,9 +119,9 @@ class _CustomDialogTimeState extends State<CustomDialogTime>
                 SizedBox(width: 30),
                 InkWell(
                   child: Text(
-                    "OK",
+                    LocaleKeys.payment_ok.tr(),
                     style: GoogleFonts.kanit(
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: (){

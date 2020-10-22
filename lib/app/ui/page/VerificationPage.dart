@@ -3,15 +3,17 @@ import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/CreateAccountPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:form_validator/form_validator.dart';
@@ -57,7 +59,7 @@ class _VerificationPageState extends State<VerificationPage> {
         _input3.text.isEmpty &&
         _input4.text.isEmpty) {
       FunctionHelper.SnackBarShow(
-          scaffoldKey: _scaffoldKey, message: "Enter number verification ");
+          scaffoldKey: _scaffoldKey, message: LocaleKeys.verification_enter_number_verification.tr());
     } else {
       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: CreateAccountPage()));
     }
@@ -65,7 +67,7 @@ class _VerificationPageState extends State<VerificationPage> {
 
   init() async {
     _progressDialog = await FunctionHelper()
-        .ProgressDiolog(context: context, message: "Loadding...");
+        .ProgressDiolog(context: context, message: LocaleKeys.signinsignup_loadding.tr());
   }
 
   @override
@@ -73,16 +75,15 @@ class _VerificationPageState extends State<VerificationPage> {
     init();
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Verification",
+          Title: LocaleKeys.verification_title.tr(),
           onBack: () {
             Navigator.pop(context, false);
           },
         ),
         body: Container(
-          color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -92,13 +93,13 @@ class _VerificationPageState extends State<VerificationPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Verification",
+                      Text(LocaleKeys.verification_title.tr(),
                           style: GoogleFonts.kanit(
-                              color: Env.value.secondaryColor, fontSize: 24)),
+                              color: ThemeColor.secondaryColor(context), fontSize: 24)),
                       SizedBox(height: 5),
-                      Text("Your verification code is sent by SMS to.",
-                          style: GoogleFonts.kanit(fontSize: 14)),
-                      Text("0987654321", style: GoogleFonts.kanit(fontSize: 14)),
+                      Text(LocaleKeys.verification_info.tr(),
+                          style: GoogleFonts.kanit(fontSize: 14,color: ThemeColor.fontprimaryColor(context))),
+                      Text("0987654321", style: GoogleFonts.kanit(fontSize: 14,color: ThemeColor.fontprimaryColor(context))),
                       SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +108,7 @@ class _VerificationPageState extends State<VerificationPage> {
                             width: 50,
                             child: TextFormField(
                               controller: _input1,
-                              cursorColor: Env.value.secondaryColor,
+                              cursorColor: ThemeColor.secondaryColor(context),
                               keyboardType: TextInputType.number,
                               maxLength: 1,
                               cursorHeight: 25,
@@ -123,15 +124,15 @@ class _VerificationPageState extends State<VerificationPage> {
                                       EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   border: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   helperStyle: TextStyle(
                                     color: Colors.transparent,
@@ -155,7 +156,7 @@ class _VerificationPageState extends State<VerificationPage> {
                             width: 50,
                             child: TextFormField(
                               controller: _input2,
-                              cursorColor: Env.value.secondaryColor,
+                              cursorColor: ThemeColor.secondaryColor(context),
                               keyboardType: TextInputType.number,
                               validator: ValidationBuilder()
                                   .required()
@@ -172,15 +173,15 @@ class _VerificationPageState extends State<VerificationPage> {
                                       EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   border: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   helperStyle: TextStyle(
                                     color: Colors.transparent,
@@ -204,7 +205,7 @@ class _VerificationPageState extends State<VerificationPage> {
                             width: 50,
                             child: TextFormField(
                               controller: _input3,
-                              cursorColor: Env.value.secondaryColor,
+                              cursorColor: ThemeColor.secondaryColor(context),
                               keyboardType: TextInputType.number,
                               validator: ValidationBuilder()
                                   .required()
@@ -221,15 +222,15 @@ class _VerificationPageState extends State<VerificationPage> {
                                       EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   border: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   helperStyle: TextStyle(
                                     color: Colors.transparent,
@@ -253,7 +254,7 @@ class _VerificationPageState extends State<VerificationPage> {
                             width: 50,
                             child: TextFormField(
                               controller: _input4,
-                              cursorColor: Env.value.secondaryColor,
+                              cursorColor: ThemeColor.secondaryColor(context),
                               keyboardType: TextInputType.number,
                               validator: ValidationBuilder()
                                   .required()
@@ -270,15 +271,15 @@ class _VerificationPageState extends State<VerificationPage> {
                                       EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   border: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Env.value.secondaryColor),
+                                        BorderSide(color: ThemeColor.secondaryColor(context)),
                                   ),
                                   helperStyle: TextStyle(
                                     color: Colors.transparent,
@@ -309,12 +310,12 @@ class _VerificationPageState extends State<VerificationPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Did not receive the code? ",
-                              style: GoogleFonts.kanit()),
+                          Text(LocaleKeys.verification_info_resend.tr()+" ",
+                              style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
                           InkWell(
-                            child: Text("Resend",
+                            child: Text(LocaleKeys.verification_resend.tr(),
                                 style: GoogleFonts.kanit(
-                                    color: Env.value.secondaryColor,
+                                    color: ThemeColor.secondaryColor(context),
                                     fontWeight: FontWeight.bold)),
                             onTap: () => {
                               // _progressDialog.show();
@@ -329,11 +330,11 @@ class _VerificationPageState extends State<VerificationPage> {
                           if (time != null) {
                             return Text(
                                 '${FunctionHelper.ConverTime(time: time.min != null ? time.min.toString() : "0")}:${FunctionHelper.ConverTime(time: time.sec != null ? time.sec.toString() : "0")}',
-                                style: GoogleFonts.kanit(fontSize: 30));
+                                style: GoogleFonts.kanit(fontSize: 25,color: ThemeColor.fontprimaryColor(context)));
                           } else {
                             return Container(
                               child: Text("00:00",
-                                  style: GoogleFonts.kanit(fontSize: 30)),
+                                  style: GoogleFonts.kanit(fontSize: 25,color: ThemeColor.fontprimaryColor(context))),
                             );
                           }
                         },
@@ -354,11 +355,11 @@ class _VerificationPageState extends State<VerificationPage> {
     return FlatButton(
       height: 40,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      color: Env.value.secondaryColor,
+      color: ThemeColor.secondaryColor(context),
       onPressed: () {
         _validate();
       },
-      child: Text("Verify",
+      child: Text(LocaleKeys.verification_verify.tr(),
           style: GoogleFonts.kanit(
               fontSize: 14, fontStyle: FontStyle.normal, color: Colors.white)),
     );

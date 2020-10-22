@@ -3,6 +3,7 @@ import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
@@ -42,11 +43,10 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColor.primaryColor(context),
         body: Form(
           key: _form,
           child: Container(
-            color: Colors.white,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -56,7 +56,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Create new password",style: GoogleFonts.kanit(color: Env.value.secondaryColor,fontSize: 24)),
+                        Text("Create new password",style: GoogleFonts.kanit(color: ThemeColor.secondaryColor(context),fontSize: 24)),
                         SizedBox(height: 20),
                         _formInput(),
                         SizedBox(height: 15),
@@ -66,7 +66,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                             height: 40,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
-                            color: Env.value.secondaryColor,
+                            color: ThemeColor.secondaryColor(context),
                             onPressed: () =>_validate(),
                             child: Text("Save",
                                 style: GoogleFonts.kanit(
@@ -82,18 +82,18 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                             child: OutlineButton(
                               child: Text('Cancel',
                                   style: GoogleFonts.kanit(
-                                      color: Env.value.secondaryColor,
+                                      color: ThemeColor.secondaryColor(context),
                                       fontWeight: FontWeight.w600)),
                               onPressed: () {
                                 Navigator.pop(context,false);
                               },
                               //callback when button is clicked
                               borderSide: BorderSide(
-                                color: Env.value.secondaryColor, //Color of the border
+                                color: ThemeColor.secondaryColor(context), //Color of the border
                                 style: BorderStyle.solid, //Style of the border
                                 width: 2, //width of the border
                               ),
-                              highlightedBorderColor: Env.value.secondaryColor,
+                              highlightedBorderColor: ThemeColor.secondaryColor(context),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5)),
                             ))
@@ -122,13 +122,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
           height: 65,
           child: TextFormField(
             controller: _newpassword,
-            cursorColor: Env.value.secondaryColor,
+            cursorColor: ThemeColor.secondaryColor(context),
             keyboardType: TextInputType.emailAddress,
             validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
             obscureText:true,
             decoration: InputDecoration(
                 hintText: '',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                hintStyle: GoogleFonts.kanit(color: Colors.black.withOpacity(0.2)),
+                errorStyle: GoogleFonts.kanit(color: ThemeColor.suffixIconColor(context)),
                 contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -160,7 +161,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     icon: Icon(
                       _passwordVisible ? Icons.visibility : Icons.visibility_off,
                       semanticLabel: _passwordVisible ? 'hide password' : 'show password',
-                      color: Colors.black.withOpacity(0.2),
+                      color: ThemeColor.suffixIconColor(context),
                       size: 20,
                     ),
                     onPressed: () {
@@ -183,13 +184,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
           height: 65,
           child: TextFormField(
             controller: _confirmpassword,
-            cursorColor: Env.value.secondaryColor,
+            cursorColor: ThemeColor.secondaryColor(context),
             keyboardType: TextInputType.emailAddress,
             validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
             obscureText:_passwordConfirmVisible,
             decoration: InputDecoration(
                 hintText: '',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                hintStyle: GoogleFonts.kanit(color: Colors.black.withOpacity(0.2)),
+                errorStyle: GoogleFonts.kanit(color: ThemeColor.suffixIconColor(context)),
                 contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -222,7 +224,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     icon: Icon(
                       _passwordConfirmVisible ? Icons.visibility : Icons.visibility_off,
                       semanticLabel: _passwordConfirmVisible ? 'hide password' : 'show password',
-                      color: Colors.black.withOpacity(0.2),
+                      color: ThemeColor.suffixIconColor(context),
                       size: 20,
                     ),
                     onPressed: () {

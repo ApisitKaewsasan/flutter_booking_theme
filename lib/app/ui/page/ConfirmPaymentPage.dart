@@ -9,15 +9,17 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/ui/page/PaymentPage.dart';
 import 'package:ds_book_app/app/ui/page/TransferfromPage.dart';
 import 'package:ds_book_app/app/ui/page/TransfertoPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/Check_Box.dart';
 import 'package:ds_book_app/utility/widget/CustomDialogTime.dart';
 import 'package:ds_book_app/utility/widget/SliderImage.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -80,13 +82,13 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
     // TODO: implement build
 
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Confirm payment",
+          Title: LocaleKeys.payment_confirm_payment.tr(),
           onBack: () => Navigator.pop(context, false),
         ),
         body: Container(
-          color: Colors.white,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -129,7 +131,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                     borderRadius: BorderRadius.circular(5)),
                 color: Color(ColorUtils.hexToInt('#D65653')),
                 onPressed: _validate,
-                child: Text("Send",
+                child: Text(LocaleKeys.payment_send.tr(),
                     style: GoogleFonts.kanit(
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
@@ -154,20 +156,19 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Transfer date", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_transfer_date.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
                           controller: _pickDate,
                           readOnly: true,
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
-                              hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                              hintStyle: TextStyle(color: ThemeColor.fontprimaryColor(context)),
                               hintText: DateFormat("dd/MM/yyyy").format(DateTime.now()),
-                              helperText: 'select transfer date',
                               contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -196,7 +197,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                               ),
                               prefixIcon: Padding(
                                 padding: EdgeInsets.only(top: 0), // add padding to adjust icon
-                                child: Icon(FontAwesome.calendar,color: Env.value.secondaryColor,size: 18,),
+                                child: Icon(FontAwesome.calendar,color: ThemeColor.secondaryColor(context),size: 18,),
                               )
                           ),
                           style:GoogleFonts.kanit(fontSize: 15),
@@ -213,20 +214,19 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Transfer time", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_transfer_time.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
                           controller: _pickTime,
                         readOnly: true,
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                            hintStyle: TextStyle(color: ThemeColor.fontprimaryColor(context)),
                               hintText: DateFormat.d().add_jm().format(DateTime.now()).split(" ")[1]+" "+DateFormat.d().add_jm().format(DateTime.now()).split(" ")[2],
-                              helperText: 'select transfer time',
                               contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -255,7 +255,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                               ),
                               prefixIcon: Padding(
                                 padding: EdgeInsets.only(top: 0), // add padding to adjust icon
-                                child: Icon(FontAwesome5.clock,color: Env.value.secondaryColor,),
+                                child: Icon(FontAwesome5.clock,color: ThemeColor.secondaryColor(context),),
                               ),
                           ),
                         style:GoogleFonts.kanit(fontSize: 15),
@@ -269,7 +269,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
               )
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(height: 0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -277,20 +277,19 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Transfer from", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_transfer_from.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
                         controller: _transferFrom,
                         readOnly: true,
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
                             hintText: 'xxxxxxxxx',
-                            helperText: 'select bank from',
-                            hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                            hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                               contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -333,20 +332,19 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Transfer to", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_transfer_to.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
                         readOnly: true,
                           controller: _transferto,
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
                               hintText: 'xxxxxxxxx',
-                              helperText: 'select bank to',
-                              hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                              hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                               contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -385,7 +383,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
               )
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(height: 0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -393,18 +391,18 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Amount", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_amount.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
                             hintText: '฿x,xxx.xx',
-                            helperText: 'Amount to transfer',
-                            hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                            helperText: LocaleKeys.payment_amount_tran.tr(),
+                            hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                             contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
@@ -432,7 +430,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                               ),
                             ),
                           ),
-                        style:GoogleFonts.kanit(fontSize: 15),
+                        style:GoogleFonts.kanit(fontSize: 15,color: ThemeColor.hintTextColor(context)),
                       ),
                     )
                   ],
@@ -443,18 +441,18 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Bank Acc", style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16)),
+                    Text(LocaleKeys.payment_bank_acc.tr(), style: GoogleFonts.kanit(fontWeight: FontWeight.w500,fontSize: 16,color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5,),
                     Container(
                       height: 65,
                       child: TextFormField(
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.datetime,
                           validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
                           decoration: InputDecoration(
-                              hintText: 'xxx-x-xx123-4',
-                              helperText: '(last 4 digits)',
-                              hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                              hintText: 'xxxx-xxxx-5565',
+                              helperText: LocaleKeys.payment_digits.tr(),
+                              hintStyle: TextStyle(color:ThemeColor.hintTextColor(context)),
                               contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 20.0, 0.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -482,7 +480,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                                 ),
                               )
                           ),
-                        style:GoogleFonts.kanit(fontSize: 15),
+                        style:GoogleFonts.kanit(fontSize: 15,color: ThemeColor.hintTextColor(context)),
                       ),
                     )
                   ],
@@ -503,9 +501,9 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
           children: [
             Container(
                 width: MediaQuery.of(context).size.width,
-                child: Text("Upload receipt:",
+                child: Text(LocaleKeys.payment_upload_receipt.tr(),
                     style: GoogleFonts.kanit(
-                        fontSize: 24, color: Env.value.secondaryColor))),
+                        fontSize: 24, color: ThemeColor.secondaryColor(context)))),
             _buildImage()
           ],
         ),
@@ -524,8 +522,8 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-              "For faster payment confirmation, we would recommend you to upload a receipt from mobile banking application or internet banking instead of other receipts, otherwise payment confirmation might be delayed",
-              style: GoogleFonts.kanit(fontSize: 12))
+              LocaleKeys.payment_payment_into3.tr(),
+              style: GoogleFonts.kanit(fontSize: 12,color: ThemeColor.fontprimaryColor(context)))
         ],
       ),
     );
@@ -553,7 +551,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
           child: DottedBorder(
             dashPattern: [8, 10],
             strokeWidth: 2,
-            color: Env.value.secondaryColor,
+            color: ThemeColor.secondaryColor(context),
             borderType: BorderType.RRect,
             radius: Radius.circular(12),
             padding: EdgeInsets.all(6),
@@ -573,7 +571,7 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
           child: DottedBorder(
             dashPattern: [8, 10],
             strokeWidth: 2,
-            color: Env.value.secondaryColor,
+            color: ThemeColor.secondaryColor(context),
             borderType: BorderType.RRect,
             radius: Radius.circular(12),
             padding: EdgeInsets.all(6),
@@ -588,13 +586,13 @@ class _ConfirmPaymentPagePageState extends State<ConfirmPaymentPage> {
                         "assets/images/Icon_upload.svg",
                         width: 35,
                         height: 35,
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                       ),
                       SizedBox(height: 5),
-                      Text("Click to upload",
+                      Text(LocaleKeys.payment_click_upload.tr(),
                           style: GoogleFonts.kanit(
                               fontSize: 18,
-                              color: Env.value.secondaryColor)),
+                              color: ThemeColor.secondaryColor(context))),
 
                     ],
                   ),

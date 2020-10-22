@@ -3,20 +3,27 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:ds_book_app/app/model/core/AppBookingApplication.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/ui/page/SplashPage.dart';
 import 'package:ds_book_app/app/ui/page/StartUpPage.dart';
 import 'package:ds_book_app/config/Env.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 final RouteObserver<PageRoute> routeObserver = new RouteObserver<PageRoute>();
 
 
 class AppComponent extends StatefulWidget {
 
+
+
   final AppBookingApplication _application;
+
+
 
   AppComponent(this._application);
 
@@ -30,7 +37,9 @@ class AppComponentState extends State<AppComponent> {
 
   final AppBookingApplication _application;
 
+
   AppComponentState(this._application);
+
 
   @override
   void dispose()async{
@@ -39,19 +48,29 @@ class AppComponentState extends State<AppComponent> {
     await _application.onTerminate();
   }
 
+
   @override
   Widget build(BuildContext context) {
-
+//flutter pub run gen_lang:generate
     final app = new MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: Env.value.appName,
       debugShowCheckedModeBanner: false,
-      theme: new ThemeData(primarySwatch: Env.value.primarySwatch,snackBarTheme: SnackBarThemeData(contentTextStyle: GoogleFonts.kanit()),primaryColor: Color(ColorUtils.hexToInt('#FFFFFF')),
+      theme: new ThemeData(primarySwatch: ThemeColor.primarySwatch(context),snackBarTheme: ThemeColor.SnackBarThemeColor(context),primaryColor: Colors.white,
+      ),
+      darkTheme: ThemeData(
+          primarySwatch: ThemeColor.primarySwatch(context),snackBarTheme: ThemeColor.SnackBarThemeColor(context), brightness: Brightness.dark
       ),
       home: SplashPage(),
       navigatorObservers: [routeObserver],
     );
 
+
     final appProvider = AppProvider(child: app, application: _application);
     return appProvider;
   }
+
+
 }

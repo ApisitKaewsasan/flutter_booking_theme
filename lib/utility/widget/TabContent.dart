@@ -1,11 +1,14 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class TabContent extends StatefulWidget {
 
@@ -42,12 +45,12 @@ class _TabContentState extends State<TabContent> {
               child: Center(
                   child: Column(
                 children: [
-                  Text("Details",
+                  Text(LocaleKeys.select_room_room_detail.tr(),
                       style: GoogleFonts.kanit(
                           fontSize: 16,
                           color: Tab1
-                              ? Colors.black
-                              : Color(ColorUtils.hexToInt("#858585")))),
+                              ? ThemeColor.fontprimaryColor(context)
+                              : ThemeColor.hintTextColor(context))),
                   Visibility(
                     visible: Tab1,
                     child: _lineTab(),
@@ -71,12 +74,12 @@ class _TabContentState extends State<TabContent> {
               child: Center(
                   child: Column(
                 children: [
-                  Text("Reviews",
+                  Text(LocaleKeys.select_room_reviews.tr(),
                       style: GoogleFonts.kanit(
                           fontSize: 16,
                           color: Tab2
-                              ? Colors.black
-                              : Color(ColorUtils.hexToInt("#858585")))),
+                              ? ThemeColor.fontprimaryColor(context)
+                              : ThemeColor.hintTextColor(context))),
                   Visibility(
                     visible: Tab2,
                     child: _lineTab(),
@@ -105,10 +108,10 @@ class _TabContentState extends State<TabContent> {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(bottom: 20),
+            padding: EdgeInsets.only(bottom: 35),
             child: Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
             style: GoogleFonts.kanit(
-                color: Color(ColorUtils.hexToInt("#858585")))),
+                color: ThemeColor.fontFadedColor(context))),
           ),
 
           Container(
@@ -116,11 +119,11 @@ class _TabContentState extends State<TabContent> {
             child: Row(
               children: [
                 _NeedObject(
-                    label: "Free WiFi",
+                    label: LocaleKeys.select_room_freewifi.tr(),
                     icon: "assets/images/Icon_wifi.svg",
                     size: 15),
                 _NeedObject(
-                    label: "Air Conditioning",
+                    label: LocaleKeys.select_room_air_conditioning.tr(),
                     icon: "assets/images/Icon_snow.svg",
                     size: 20),
               ],
@@ -130,23 +133,23 @@ class _TabContentState extends State<TabContent> {
             child: Row(
               children: [
                 _NeedObject(
-                    label: "No Smoking",
+                    label: LocaleKeys.select_room_no_smoking.tr(),
                     icon: "assets/images/Icon_smoking.svg",
                     size: 20),
                 _NeedObject(
-                    label: "Cable TV",
+                    label: LocaleKeys.select_room_cabletb.tr(),
                     icon: "assets/images/Icon_tv.svg",
                     size: 15),
               ],
             ),
           ),
-          SizedBox(height: 25),
+          SizedBox(height: 35),
           Container(
             width: MediaQuery.of(context).size.width,
-            child: Text("Activity & Facilities",
+            child: Text(LocaleKeys.select_room_activity.tr(),
                 style: GoogleFonts.kanit(fontSize: 18)),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Container(
             child: Row(
               children: [
@@ -159,7 +162,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Fitness Centre")
+                          Text(LocaleKeys.select_room_fitness.tr(),style: GoogleFonts.kanit())
                         ],
                       ),
                       Row(
@@ -168,7 +171,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Shampoo")
+                          Text(LocaleKeys.select_room_shampoo.tr(),style: GoogleFonts.kanit())
                         ],
                       ),
                       Row(
@@ -177,7 +180,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Mini Bar")
+                          Text(LocaleKeys.select_room_mini.tr(),style: GoogleFonts.kanit())
                         ],
                       )
                     ],
@@ -192,7 +195,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Fitness Centre")
+                          Text(LocaleKeys.select_room_swimming.tr(),style: GoogleFonts.kanit())
                         ],
                       ),
                       Row(
@@ -201,7 +204,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Shampoo")
+                          Text(LocaleKeys.select_room_soap.tr(),style: GoogleFonts.kanit())
                         ],
                       ),
                       Row(
@@ -210,7 +213,7 @@ class _TabContentState extends State<TabContent> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Mini Bar")
+                          Text(LocaleKeys.select_room_mountain.tr(),style: GoogleFonts.kanit())
                         ],
                       )
                     ],
@@ -218,7 +221,8 @@ class _TabContentState extends State<TabContent> {
                 )
               ],
             ),
-          )
+          ),
+          SizedBox(height: 40),
         ],
       ),
     );
@@ -232,12 +236,12 @@ class _TabContentState extends State<TabContent> {
             icon,
             width: size,
             height: size,
-            color: Env.value.secondaryColor,
+            color: ThemeColor.secondaryColor(context),
           ),
           SizedBox(
             width: 10,
           ),
-          Text(label)
+          Text(label,style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)))
         ],
       ),
     );
@@ -248,9 +252,9 @@ class _TabContentState extends State<TabContent> {
         width: 45,
         height: 4,
         decoration: BoxDecoration(
-            color: Env.value.secondaryColor,
+            color: ThemeColor.secondaryColor(context),
             border: Border.all(
-              color: Env.value.secondaryColor,
+              color: ThemeColor.secondaryColor(context),
               width: 3.0,
             ),
             borderRadius: BorderRadius.all(
@@ -303,10 +307,10 @@ class _TabContentState extends State<TabContent> {
                           child: Row(
                             children: [
                               Text("Wick John",
-                                  style: GoogleFonts.kanit(fontSize: 14)),
+                                  style: GoogleFonts.kanit(fontSize: 14,color: ThemeColor.fontprimaryColor(context))),
                               SizedBox(width: 10,),
                               Text("(5 days ago)",
-                                  style: GoogleFonts.kanit(fontSize: 11,color: Color(ColorUtils.hexToInt("#858585"))))
+                                  style: GoogleFonts.kanit(fontSize: 11,color: ThemeColor.fontFadedColor(context)))
                             ],
                           )),
                       Expanded(
@@ -322,8 +326,8 @@ class _TabContentState extends State<TabContent> {
                               starCount: 5,
                               rating: 2.5,
                               size: 15.0,
-                              color: Env.value.secondaryColor,
-                              borderColor: Env.value.secondaryColor,
+                              color: ThemeColor.secondaryColor(context),
+                              borderColor: ThemeColor.secondaryColor(context),
                             )
                           ],
                         ),
@@ -332,7 +336,7 @@ class _TabContentState extends State<TabContent> {
                   ),
                   Text(
                       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
-                      style: GoogleFonts.kanit(fontSize: 12,color: Color(ColorUtils.hexToInt("#858585"))))
+                      style: GoogleFonts.kanit(fontSize: 12,color: ThemeColor.fontFadedColor(context)))
                 ],
               ),
             ),

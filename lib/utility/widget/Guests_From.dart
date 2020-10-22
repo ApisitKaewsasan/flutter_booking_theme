@@ -1,8 +1,11 @@
 
 import 'package:basic_utils/basic_utils.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Guests_From extends StatelessWidget {
   final int count_adults;
@@ -19,12 +22,12 @@ class Guests_From extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CountHeader(),
-        Countnumber_picker(label: "Adults :",count: count_adults,onCount: onCountAdults),
-        Countnumber_picker(label: "Children :",count: count_children,onCount: onCountChildren),
+        CountHeader(context),
+        Countnumber_picker(context,label: "${LocaleKeys.booking_adults.tr()} :",count: count_adults,onCount: onCountAdults),
+        Countnumber_picker(context,label: "${LocaleKeys.booking_children.tr()} :",count: count_children,onCount: onCountChildren),
         Column(
           children: [
-            for(var i=0;i<count_children;i++) Countnumber_input(label: "Ags of child ${i+1} :",count: count_children,onCount: onCountChildren)
+            for(var i=0;i<count_children;i++) Countnumber_input(label: "${LocaleKeys.room_optin_age_of_child.tr()} ${i+1} :",count: count_children,onCount: onCountChildren)
           ],
         ),
         SizedBox(height: 10,),
@@ -34,20 +37,20 @@ class Guests_From extends StatelessWidget {
     );
   }
 
-  Widget CountHeader(){
+  Widget CountHeader(BuildContext context){
     return Row(
       children: [
         Flexible(
             fit: FlexFit.tight,
             child: Container(
-              child: Text("Room ${number_room}",style: GoogleFonts.kanit(fontSize: 15,color: Colors.black)),
+              child: Text("${LocaleKeys.select_room_room.tr()} ${number_room}",style: GoogleFonts.kanit(fontSize: 15,color: ThemeColor.fontprimaryColor(context))),
               alignment: Alignment.topLeft,
             )),
         Flexible(
             fit: FlexFit.tight,
             child: GestureDetector(
               child: Container(
-                child: Text("Remove",style: GoogleFonts.kanit(fontSize: 15,color: Color(ColorUtils.hexToInt("#D65653")))),
+                child: Text(LocaleKeys.room_optin_remove.tr(),style: GoogleFonts.kanit(fontSize: 15,color: Color(ColorUtils.hexToInt("#D65653")))),
                 alignment: Alignment.topRight,
               ),
               onTap: ()=>onCountRemove(),
@@ -56,13 +59,13 @@ class Guests_From extends StatelessWidget {
     );
   }
 
-  Widget Countnumber_picker({String label,int count,Function(int) onCount}){
+  Widget Countnumber_picker(BuildContext context,{String label,int count,Function(int) onCount}){
     return Row(
       children: [
         Flexible(
             fit: FlexFit.tight,
             child: Container(
-              child: Text(label,style: GoogleFonts.kanit(fontSize: 15)),
+              child: Text(label,style: GoogleFonts.kanit(fontSize: 15,color: ThemeColor.fontprimaryColor(context))),
               alignment: Alignment.topLeft,
             )),
         Flexible(

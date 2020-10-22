@@ -6,12 +6,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/ui/page/PaymentPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/Check_Box.dart';
+import 'package:ds_book_app/utility/widget/CustomCancelDialogBox.dart';
 import 'package:ds_book_app/utility/widget/SliderImage.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,16 +31,11 @@ class PaymentPage extends StatefulWidget {
   static const String PATH = '/payment';
 
    final  id;
+  final titiletag;
+  final imagetag;
 
-  const PaymentPage({Key key, this.id="0"}) : super(key: key);
+  const PaymentPage({Key key, this.id="0", this.titiletag,this.imagetag}) : super(key: key);
 
-  static String generatePath(String id){
-    Map<String, dynamic> parma = {
-      'id': id
-    };
-    Uri uri = Uri(path: PATH, queryParameters: parma);
-    return uri.toString();
-  }
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -90,13 +88,13 @@ class _PaymentPageState extends State<PaymentPage> {
     // TODO: implement build
 
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Payment",
+          Title: LocaleKeys.payment_title.tr(),
           onBack: () => Navigator.pop(context, false),
         ),
         body: Container(
-          color: Colors.white,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -107,11 +105,11 @@ class _PaymentPageState extends State<PaymentPage> {
                       Container(
                           margin: EdgeInsets.all(10),
                           width: MediaQuery.of(context).size.width,
-                          child: Text("Your booking details:",
+                          child: Text(LocaleKeys.booking_book_detail.tr(),
                               style: GoogleFonts.kanit(
                                   fontSize: 20,
-                                  color: Env.value.secondaryColor))),
-                      SliderImage(height: 180),
+                                  color: ThemeColor.secondaryColor(context)))),
+                      Hero(tag: widget.imagetag,child: SliderImage(height: 180)),
                       Container(
                         child: Form(
                           key: _form,
@@ -153,9 +151,12 @@ class _PaymentPageState extends State<PaymentPage> {
           SizedBox(height: 10),
           Row(
             children: [
-              Text("Deluxe Room",
-                  style: GoogleFonts.kanit(
-                      fontSize: 18, fontWeight: FontWeight.w500))
+              Hero(
+                tag: widget.titiletag,
+                child: Text("Deluxe Room",
+                    style: GoogleFonts.kanit(
+                        fontSize: 18, fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
+              )
             ],
           ),
           Row(
@@ -164,7 +165,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   flex: 3,
                   child: Text("2nd floor with mountain view",
                       style: GoogleFonts.kanit(
-                          fontSize: 13, fontWeight: FontWeight.w300))),
+                          fontSize: 13, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))),
               Expanded(
                 flex: 2,
                 child: Row(
@@ -172,14 +173,15 @@ class _PaymentPageState extends State<PaymentPage> {
                   children: [
                     SmoothStarRating(
                       allowHalfRating: true,
+                      isReadOnly: true,
                       onRated: (v) {
                         print(v);
                       },
                       starCount: 5,
                       rating: 2.5,
                       size: 18.0,
-                      color: Env.value.secondaryColor,
-                      borderColor: Env.value.secondaryColor,
+                      color: ThemeColor.secondaryColor(context),
+                      borderColor: ThemeColor.secondaryColor(context),
                     ),
                     SizedBox(
                       width: 10,
@@ -188,7 +190,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         style: GoogleFonts.kanit(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Env.value.secondaryColor))
+                            color: ThemeColor.secondaryColor(context)))
                   ],
                 ),
               )
@@ -210,15 +212,15 @@ class _PaymentPageState extends State<PaymentPage> {
           Row(
             children: [
               Expanded(
-                  child: Text("Check-in",
+                  child: Text(LocaleKeys.booking_check_in.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070"))))),
+                          color: ThemeColor.fontFadedColor(context)))),
               Expanded(
-                  child: Text("Check-out",
+                  child: Text(LocaleKeys.booking_check_out.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070")))))
+                          color: ThemeColor.fontFadedColor(context))))
             ],
           ),
           SizedBox(
@@ -247,15 +249,15 @@ class _PaymentPageState extends State<PaymentPage> {
           Row(
             children: [
               Expanded(
-                  child: Text("Rooms",
+                  child: Text(LocaleKeys.select_room_room.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070"))))),
+                          color: ThemeColor.fontFadedColor(context)))),
               Expanded(
-                  child: Text("Guests",
+                  child: Text(LocaleKeys.select_room_guests.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070")))))
+                      color: ThemeColor.fontFadedColor(context))))
             ],
           ),
           SizedBox(
@@ -264,10 +266,10 @@ class _PaymentPageState extends State<PaymentPage> {
           Row(
             children: [
               Expanded(
-                  child: Text("3 nights, 2 rooms ",
+                  child: Text("3 ${LocaleKeys.mybooking_night.tr()}, 2 ${LocaleKeys.select_room_room.tr()} ",
                       style: GoogleFonts.kanit(fontWeight: FontWeight.w500))),
               Expanded(
-                  child: Text("2 adults, 2 children",
+                  child: Text("2 ${LocaleKeys.booking_adults.tr()} 2 ${LocaleKeys.booking_children.tr()}",
                       style: GoogleFonts.kanit(fontWeight: FontWeight.w500)))
             ],
           )
@@ -283,22 +285,22 @@ class _PaymentPageState extends State<PaymentPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-              child: Text("Total price:",
+              child: Text(LocaleKeys.mybooking_total.tr(),
                   style: GoogleFonts.kanit(
                       fontWeight: FontWeight.bold,
-                      color: Color(ColorUtils.hexToInt("#707070"))))),
+                      color: ThemeColor.fontFadedColor(context)))),
           Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text("฿3,543.00",
                       style: GoogleFonts.kanit(
-                          fontWeight: FontWeight.bold, color: Colors.black)),
-                  Text("including taxes & fees",
+                          fontWeight: FontWeight.bold,color: ThemeColor.fontprimaryColor(context))),
+                  Text(LocaleKeys.booking_including_taxes.tr(),
                       style: GoogleFonts.kanit(
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070"))))
+                          color: ThemeColor.fontFadedColor(context)))
                 ],
               ))
         ],
@@ -311,26 +313,26 @@ class _PaymentPageState extends State<PaymentPage> {
       margin: EdgeInsets.only(right: 20, left: 20, top: 10),
       child: Column(
         children: [
-          Text("Summary",
+          Text(LocaleKeys.booking_summary.tr(),
               style: GoogleFonts.kanit(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  color: Env.value.secondaryColor)),
+                  color: ThemeColor.secondaryColor(context))),
           SizedBox(height: 20),
           Row(
             children: [
               Expanded(
-                  child: Text("Price due to stay:",
+                  child: Text(LocaleKeys.booking_price_due_stay.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.normal,
-                          color: Color(ColorUtils.hexToInt("#707070"))))),
+                          color: ThemeColor.fontFadedColor(context)))),
               Expanded(
                   child: Container(
                       alignment: Alignment.topRight,
                       child: Text("฿3,000.00",
                           style: GoogleFonts.kanit(
                               fontWeight: FontWeight.normal,
-                              color: Color(ColorUtils.hexToInt("#707070"))))))
+                    color: ThemeColor.fontFadedColor(context)))))
             ],
           ),
           SizedBox(
@@ -339,17 +341,17 @@ class _PaymentPageState extends State<PaymentPage> {
           Row(
             children: [
               Expanded(
-                  child: Text("Taxes & fees :",
+                  child: Text(LocaleKeys.booking_taxes.tr(),
                       style: GoogleFonts.kanit(
                           fontWeight: FontWeight.w500,
-                          color: Color(ColorUtils.hexToInt("#707070"))))),
+                          color: ThemeColor.fontFadedColor(context)))),
               Expanded(
                   child: Container(
                     alignment: Alignment.topRight,
                     child: Text("฿543.00",
                         style: GoogleFonts.kanit(
                             fontWeight: FontWeight.w500,
-                            color: Color(ColorUtils.hexToInt("#707070")))),
+                            color:ThemeColor.fontFadedColor(context))),
                   ))
             ],
           ),
@@ -376,7 +378,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     borderRadius: BorderRadius.circular(5)),
                 color: Color(ColorUtils.hexToInt('#D65653')),
                 onPressed: _validate,
-                child: Text("Pay Now",
+                child: Text(LocaleKeys.mybooking_paynow.tr(),
                     style: GoogleFonts.kanit(
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
@@ -398,15 +400,15 @@ class _PaymentPageState extends State<PaymentPage> {
         children: [
           Container(
               width: MediaQuery.of(context).size.width,
-              child: Text("Special request",
+              child: Text(LocaleKeys.booking_special_request.tr(),
                   style: GoogleFonts.kanit(
-                      fontSize: 20, color: Env.value.secondaryColor))),
+                      fontSize: 20, color: ThemeColor.secondaryColor(context)))),
           SizedBox(height: 10),
           Container(
               width: MediaQuery.of(context).size.width,
-              child: Text("Extra bed / Microwave ",
+              child: Text("${LocaleKeys.booking_extra_bed.tr()} / ${LocaleKeys.booking_microwave.tr()} ",
                   style: GoogleFonts.kanit(
-                      fontSize: 14, color: Color(ColorUtils.hexToInt("#858585"))))),
+                      fontSize: 14, color:  ThemeColor.fontFadedColor(context)))),
         ],
       ),
     );
@@ -419,25 +421,25 @@ class _PaymentPageState extends State<PaymentPage> {
         children: [
           Container(
               width: MediaQuery.of(context).size.width,
-              child: Text("Your details:",
+              child: Text(LocaleKeys.profile_youdetail.tr(),
                   style: GoogleFonts.kanit(
-                      fontSize: 20, color: Env.value.secondaryColor))),
+                      fontSize: 20, color: ThemeColor.secondaryColor(context)))),
           SizedBox(height: 10),
           Container(
               width: MediaQuery.of(context).size.width,
               child: Text("John Mayer",
                   style: GoogleFonts.kanit(
-                      fontSize: 16, color: Colors.black))),
+                      fontSize: 16,color: ThemeColor.fontprimaryColor(context)))),
           Container(
               width: MediaQuery.of(context).size.width,
               child: Text("johnmayer@dotsocket.com",
                   style: GoogleFonts.kanit(
-                      fontSize: 14, color: Color(ColorUtils.hexToInt("#858585"))))),
+                      fontSize: 14,color: ThemeColor.fontFadedColor(context)))),
           Container(
               width: MediaQuery.of(context).size.width,
               child: Text("081 234 5678",
                   style: GoogleFonts.kanit(
-                      fontSize: 14, color: Color(ColorUtils.hexToInt("#858585"))))),
+                      fontSize: 14,color: ThemeColor.fontFadedColor(context)))),
         ],
       ),
     );
@@ -453,9 +455,9 @@ class _PaymentPageState extends State<PaymentPage> {
              children: [
                Container(
                    width: MediaQuery.of(context).size.width,
-                   child: Text("Payment Method",
+                   child: Text(LocaleKeys.booking_payment_method.tr(),
                        style: GoogleFonts.kanit(
-                           fontSize: 20, color: Env.value.secondaryColor))),
+                           fontSize: 20, color: ThemeColor.secondaryColor(context)))),
                SizedBox(height: 20),
                Row(
                  children: [
@@ -463,19 +465,19 @@ class _PaymentPageState extends State<PaymentPage> {
                      flex: 6,
                      child: Row(
                        children: [
-                         SvgPicture.asset("assets/images/baht_icon.svg",width: 20,height: 20,color: Env.value.secondaryColor),
+                         SvgPicture.asset("assets/images/baht_icon.svg",width: 20,height: 20,color: ThemeColor.secondaryColor(context)),
                          SizedBox(width: 10),
-                         Text("Bank Transfer",style: GoogleFonts.kanit()),
+                         Text(LocaleKeys.booking_bank_transfer.tr(),style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
                        ],
                      ),
                    ),
                    Expanded(
                      flex: 1,
-                     child: SvgPicture.asset("assets/images/dot.svg",width: 13,height: 13),
+                     child: SvgPicture.asset("assets/images/dot.svg",width: 13,height: 13,color: ThemeColor.fontprimaryColor(context)),
                    )
                  ],
                ),
-               Divider(color: Colors.black),
+               Divider(color: ThemeColor.fontprimaryColor(context)),
                SizedBox(height: 10),
 
              ],
@@ -490,20 +492,20 @@ class _PaymentPageState extends State<PaymentPage> {
            width: MediaQuery.of(context).size.width,
            height: 60,
            child: OutlineButton(
-             child: Text('Cancel this booking',
+             child: Text(LocaleKeys.booking_Cancel_booking.tr(),
                  style: GoogleFonts.kanit(
-                     color: Env.value.secondaryColor,
+                     color: ThemeColor.secondaryColor(context),
                      fontWeight: FontWeight.w600)),
              onPressed: () {
-               Navigator.pop(context,false);
+               _showCancelDialog();
              },
              //callback when button is clicked
              borderSide: BorderSide(
-               color: Env.value.secondaryColor, //Color of the border
+               color: ThemeColor.secondaryColor(context), //Color of the border
                style: BorderStyle.solid, //Style of the border
                width: 2, //width of the border
              ),
-             highlightedBorderColor: Env.value.secondaryColor,
+             highlightedBorderColor: ThemeColor.secondaryColor(context),
              shape: RoundedRectangleBorder(
                  borderRadius: BorderRadius.circular(5)),
            )):SizedBox(),
@@ -512,8 +514,21 @@ class _PaymentPageState extends State<PaymentPage> {
     );
   }
 
+  Future<void> _showCancelDialog() async {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CustomCancelDialogBox(
+            onCall: (String val) {
+                print(val);
+            },
+          );
+        });
+  }
+
+
   _navigateToPaymentPage(BuildContext context) async {
-    Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: PaymentPage()));
+   // Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: PaymentPage()));
 
   }
 

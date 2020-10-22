@@ -1,10 +1,12 @@
 import 'package:basic_utils/basic_utils.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 
 class TransfertoPage extends StatelessWidget {
 
@@ -29,13 +31,13 @@ class TransfertoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Transfer from",
+          Title: LocaleKeys.payment_transfer_to.tr(),
           onBack: () => Navigator.pop(context, ""),
         ),
         body: Container(
-          color: Colors.white,
           padding: EdgeInsets.only(top: 10),
           child: Column(
             children: <Widget>[
@@ -43,8 +45,8 @@ class TransfertoPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      _ListView(icon: "assets/images/bank/icon_scb.png",title: "Siam Commercial Bank (SCB)",context: context),
-                      _ListView(icon: "assets/images/bank/icon_kp.png",title: "Kasikorn Bank (KBank)",context: context)
+                      _ListView(icon: "assets/images/bank/icon_scb.png",title: LocaleKeys.bank_scb.tr(),context: context),
+                      _ListView(icon: "assets/images/bank/icon_kp.png",title: LocaleKeys.bank_kbank.tr(),context: context)
                     ],
                   ),
                 ),
@@ -65,7 +67,7 @@ class TransfertoPage extends StatelessWidget {
               height: 35,
             ),
             title: Text(title,
-                style: GoogleFonts.kanit()),
+                style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
             trailing: title_val==title?SvgPicture.asset(
               "assets/images/Icon_check_circle.svg",
               width: 15,

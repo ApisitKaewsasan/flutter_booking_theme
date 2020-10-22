@@ -25,11 +25,13 @@ class AppBookingApplication implements Application {
     _initDioLog();
     _initDBRepository();
     _initAPIRepository();
+
   }
 
   @override
   Future<void> onTerminate() async {
     await _db.close();
+
   }
 
   Future<void> _initDB() async {

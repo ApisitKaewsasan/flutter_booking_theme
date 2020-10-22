@@ -5,25 +5,22 @@ import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/bloc/User_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/model/pojo/response/User.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/EditProfilePage.dart';
-import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/MyBookingPage.dart';
 import 'package:ds_book_app/app/ui/page/MyReviewPage.dart';
 import 'package:ds_book_app/app/ui/page/MySavedPage.dart';
 import 'package:ds_book_app/app/ui/page/NotificationPage.dart';
-import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
-import 'package:ds_book_app/app/ui/page/StartUpPage.dart';
-import 'package:ds_book_app/app/ui/page/VerificationPage.dart';
+import 'package:ds_book_app/app/ui/page/SettingPage.dart';
 import 'package:ds_book_app/config/Env.dart';
-import 'package:ds_book_app/utility/log/Log.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
-
 import 'package:flutter/material.dart';
-import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
@@ -51,8 +48,8 @@ class _ProfilePageState extends State<ProfilePage> {
     user_bloc = User_Bloc(AppProvider.getApplication(context));
 
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppToobar(header_type: Header_Type.barnon,Title: "Profile",onBack: (){
+        backgroundColor: ThemeColor.primaryColor(context),
+        appBar: AppToobar(header_type: Header_Type.barnon,Title: LocaleKeys.profile_profile_title.tr(),onBack: (){
           Navigator.pop(context, true);
         },),
         body: ListView(
@@ -72,15 +69,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     },
                   ),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
-                  _menuProfile(title: "My Booking",countMessage: 1,icon: Ionicons.ios_bed,page: MyBookingPage()),
+                  _menuProfile(title: LocaleKeys.profile_my_booking.tr(),countMessage: 1,icon: Ionicons.ios_bed,page: MyBookingPage()),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
-                  _menuProfile(title: "Saved",countMessage: 0,icon: Icons.bookmark,page: MySavedPage()),
+                  _menuProfile(title: LocaleKeys.profile_saved.tr(),countMessage: 0,icon: Icons.bookmark,page: MySavedPage()),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
-                  _menuProfile(title: "Notification",countMessage: 1,icon: Icons.notifications,page: NotificationPage()),
+                  _menuProfile(title:LocaleKeys.profile_notification.tr(),countMessage: 20,icon: Icons.notifications,page: NotificationPage()),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
-                  _menuProfile(title: "My Review",countMessage: 1,icon: Icons.star,page: MyReviewPage()),
+                  _menuProfile(title: LocaleKeys.profile_my_review.tr(),countMessage: 15,icon: Icons.star,page: MyReviewPage()),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
-                  _menuProfile(title: "Log Out",countMessage: 0,icon: FontAwesome.power_off,islogout: true),
+                  _menuProfile(title: LocaleKeys.profile_setting.tr(),countMessage: 0,icon: Icons.settings,page: SettingPage()),
+                  Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                  _menuProfile(title: LocaleKeys.profile_logout.tr(),countMessage: 0,icon: FontAwesome.power_off,islogout: true),
                   Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                 ],
               ),
@@ -123,12 +122,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       border: Border.all(color: Colors.grey[200]),
                       boxShadow: [
-                        BoxShadow(
+                        MediaQuery.of(context).platformBrightness==Brightness.light?BoxShadow(
                           color: Colors.white.withOpacity(0.9),
                           spreadRadius: 10,
                           blurRadius: 12,
                           offset: Offset(0, 6), // changes position of shadow
-                        ),
+                        ):BoxShadow(),
                       ]
                   ),
 
@@ -151,15 +150,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Padding(
                           padding: EdgeInsets.only(right: 3, left: 3),
                           child: SvgPicture.asset(
-                            "assets/images/icon_profile.svg",
+                            "assets/images/icon_proefile.svg",
                             width: 5,
                             height: 5,
-                            color: Env.value.primaryColor,
                           )),
                       decoration: BoxDecoration(
-                          color: Env.value.secondaryColor,
+                          color: ThemeColor.secondaryColor(context),
                           border: Border.all(
-                            color: Env.value.secondaryColor,
+                            color: ThemeColor.secondaryColor(context),
                             width: 3.0,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(
@@ -178,20 +176,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 100,
                 height: 30,
                 child: OutlineButton(
-                  child: Text('Edit Profile',
+                  child: Text(LocaleKeys.profile_edit_profile.tr(),
                       style: GoogleFonts.kanit(
-                          color: Env.value.secondaryColor,
+                          color: ThemeColor.secondaryColor(context),
                           fontWeight: FontWeight.w400,fontSize: 13)),
                   onPressed: () {
                     _navigateToEditProfilePage(context);
                   },
                   //callback when button is clicked
                   borderSide: BorderSide(
-                    color: Env.value.secondaryColor, //Color of the border
+                    color: ThemeColor.secondaryColor(context), //Color of the border
                     style: BorderStyle.solid, //Style of the border
                     width: 1, //width of the border
                   ),
-                  highlightedBorderColor: Env.value.secondaryColor,
+                  highlightedBorderColor: ThemeColor.secondaryColor(context),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                 ))
@@ -203,6 +201,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 
   Widget _menuProfile({String title,IconData icon,int countMessage,Widget page,bool islogout=false}){
+    double check = countMessage.toString().length.toDouble();
     return InkWell(
       child: Container(
         margin: EdgeInsets.only(left: 30,right: 20,top: 10,bottom: 10),
@@ -211,22 +210,21 @@ class _ProfilePageState extends State<ProfilePage> {
             Expanded(
               child: Row(
                 children: [
-                  Icon(icon,color: Env.value.secondaryColor,size: 25,),
+                  Icon(icon,color: ThemeColor.secondaryColor(context),size: 25,),
                   SizedBox(width: 20),
-                  Text(title,style: GoogleFonts.kanit(color: Colors.black))
+                  Text(title,style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)))
                 ],
               ),
             ),
             Row(
               children: [
                 countMessage>0?ClipRRect(
-                  borderRadius: BorderRadius.circular(3.0),
+                  borderRadius: BorderRadius.circular(4.0),
                   child: Container(
-                    alignment: Alignment.center,
-                    width: 20,
-                    height: 20,
-                    color: Env.value.secondaryColor,
-                    child: Text(countMessage.toString(),style: GoogleFonts.kanit(color: Colors.white)),
+                    width: check<3?20:(check*10),
+                    alignment: Alignment.topCenter,
+                    color: ThemeColor.secondaryColor(context),
+                    child: Container(margin: EdgeInsets.only(bottom: 0),child: Center(child: Text(countMessage.toString(),style: GoogleFonts.kanit(color:ThemeColor.ButtonColor(context),fontSize: 14)),)),
                   ),
                 ):SizedBox(),
                 SizedBox(width: 8),

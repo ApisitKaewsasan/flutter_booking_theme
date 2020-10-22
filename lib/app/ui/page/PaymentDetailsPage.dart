@@ -7,13 +7,15 @@ import 'package:clipboard/clipboard.dart';
 import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/ui/page/ConfirmPaymentPage.dart';
 import 'package:ds_book_app/app/ui/page/PaymentPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/Check_Box.dart';
 import 'package:ds_book_app/utility/widget/SliderImage.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,14 +42,14 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
     // TODO: implement build
 
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
         key: _scaffoldKey,
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Payment details",
+          Title: LocaleKeys.payment_payment_detail.tr(),
           onBack: () => Navigator.pop(context, false),
         ),
         body: Container(
-          color: Colors.white,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -58,14 +60,14 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                       _TitleBody(),
                       Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                       _Payment_option(
-                          name_bank: "Siam Commercial Bank (SCB)",
+                          name_bank: LocaleKeys.bank_scb.tr(),
                           name_account: "Dot Socket .co.,ltd.",
                           image: "assets/images/bank/icon_scb.png",
                           no_account: "123 4567 890",
                           color: Colors.deepPurple),
                       Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                       _Payment_option(
-                          name_bank: "Kasikorn Bank (KBank)",
+                          name_bank: LocaleKeys.bank_kbank.tr(),
                           name_account: "Dot Socket .co.,ltd.",
                           image: "assets/images/bank/icon_kp.png",
                           no_account: "098 7654 321",
@@ -88,10 +90,10 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Total price:", style: GoogleFonts.kanit(color: Colors.black)),
+          Text(LocaleKeys.mybooking_total.tr(), style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
           Text("฿3,543.00",
               style: GoogleFonts.kanit(
-                  color: Env.value.secondaryColor, fontWeight: FontWeight.bold))
+                  color: ThemeColor.secondaryColor(context), fontWeight: FontWeight.bold))
         ],
       ),
     );
@@ -113,27 +115,27 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                   height: 30,
                 ),
                 SizedBox(width: 10),
-                Text(name_bank, style: GoogleFonts.kanit(color: Colors.black)),
+                Text(name_bank, style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            Text("Account name:", style: GoogleFonts.kanit()),
-            Text(name_account, style: GoogleFonts.kanit(color: Colors.black)),
+            Text(LocaleKeys.payment_account_name.tr(), style: GoogleFonts.kanit()),
+            Text(name_account, style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
             SizedBox(
               height: 10,
             ),
-            Text("Account no:", style: GoogleFonts.kanit()),
+            Text(LocaleKeys.payment_account_no.tr(), style: GoogleFonts.kanit()),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(no_account,
                     style: GoogleFonts.kanit(
                         color: color, fontWeight: FontWeight.bold)),
-                Text("Copy",
+                Text(LocaleKeys.payment_copy.tr(),
                     style: GoogleFonts.kanit(
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                         fontWeight: FontWeight.bold)),
               ],
             )
@@ -142,14 +144,13 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
       ),
       onTap: (){
         FlutterClipboard.copy(no_account).then(( value ){
-          print('copied ${no_account}');
           _scaffoldKey.currentState.showSnackBar(
               SnackBar(
-                content: Text("Data copied successfully."),
+                content: Text(LocaleKeys.payment_data_successfully.tr()),
                 duration: Duration(seconds: 2),
                   action: SnackBarAction(
                     textColor: Colors.amber,
-                    label: 'OK',
+                    label: LocaleKeys.payment_ok.tr(),
                     onPressed: () {
                       _scaffoldKey.currentState.hideCurrentSnackBar();
                     },
@@ -172,18 +173,18 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-              "If you wish to make payment through ATM or over the bank counter, you can select the ATM Bill Payment option which does not require you to upload proof of payment and we can quicken the process of payment confirmation. You can also transfer through internet/mobile banking to Dot Socket account.",
+              LocaleKeys.payment_payment_into1.tr(),
               style: GoogleFonts.kanit(fontSize: 12)),
           SizedBox(
             height: 15,
           ),
           Text(
-              "Please upload picture of Internet Banking confirmation page / ATM receipt by",
-              style: GoogleFonts.kanit(fontSize: 12)),
+              LocaleKeys.payment_payment_into2.tr(),
+              style: GoogleFonts.kanit(fontSize: 12,color: ThemeColor.fontprimaryColor(context))),
           Text("16/07/2020",
               style: GoogleFonts.kanit(
                   fontSize: 12,
-                  color: Env.value.secondaryColor,
+                  color: ThemeColor.secondaryColor(context),
                   fontWeight: FontWeight.bold)),
         ],
       ),
@@ -212,7 +213,7 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                 onPressed: () {
                   _navigateToConfirmPaymentPage(context);
                 },
-                child: Text("I have receipt, Upload now.",
+                child: Text(LocaleKeys.payment_upload_receipt.tr(),
                     style:
                         GoogleFonts.kanit(fontSize: 16, color: Colors.white)),
               ),
@@ -221,20 +222,20 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   child: OutlineButton(
-                    child: Text('I do not have receipt, Upload later.',
+                    child: Text(LocaleKeys.payment_upload_later.tr(),
                         style: GoogleFonts.kanit(
-                            color: Env.value.secondaryColor,
+                            color: ThemeColor.secondaryColor(context),
                             fontWeight: FontWeight.w600)),
                     onPressed: () {
                       Navigator.pop(context,false);
                     },
                     //callback when button is clicked
                     borderSide: BorderSide(
-                      color: Env.value.secondaryColor, //Color of the border
+                      color: ThemeColor.secondaryColor(context), //Color of the border
                       style: BorderStyle.solid, //Style of the border
                       width: 2, //width of the border
                     ),
-                    highlightedBorderColor: Env.value.secondaryColor,
+                    highlightedBorderColor: ThemeColor.secondaryColor(context),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                   ))

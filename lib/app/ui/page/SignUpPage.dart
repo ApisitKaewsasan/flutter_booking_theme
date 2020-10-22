@@ -4,6 +4,7 @@ import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppComponent.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
@@ -11,6 +12,7 @@ import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/app/ui/page/SignInPage.dart';
 import 'package:ds_book_app/app/ui/page/VerificationPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 
@@ -21,6 +23,7 @@ import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignUpPage extends StatefulWidget {
   static const String PATH = '/signup';
@@ -38,9 +41,9 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
     RegExp nameRegExp = RegExp('[a-zA-Z]');
     // var stats_form = _form.currentState.validate();
     if(_phone.text.isEmpty ){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "phone not Empty");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.reset_pass_email_phone_Empty.tr());
     }else if(_phone.text.length<10){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "phone  Incorrect format");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_phone_incorrect_format.tr());
     }else{
       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: VerificationPage()));
     }
@@ -68,17 +71,16 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Sign Up",
+          Title: LocaleKeys.signinsignup_signup.tr(),
           elevation: 0,
           onBack: () {
             Navigator.pop(context, false);
           },
         ),
         body: Container(
-          color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -88,17 +90,17 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Sign Up",
+                      Text(LocaleKeys.signinsignup_signup.tr(),
                           style: GoogleFonts.kanit(
-                              color: Env.value.secondaryColor, fontSize: 24)),
+                              color: ThemeColor.secondaryColor(context), fontSize: 24)),
                       SizedBox(height: 20),
-                      Text("Phone no.", style: GoogleFonts.kanit()),
+                      Text(LocaleKeys.profile_phone_no.tr(), style: GoogleFonts.kanit()),
                       SizedBox(height: 5),
                       Container(
                         height: 40,
                         child: TextFormField(
                           controller: _phone,
-                          cursorColor: Env.value.secondaryColor,
+                          cursorColor: ThemeColor.secondaryColor(context),
                           keyboardType: TextInputType.phone,
                           validator: ValidationBuilder()
                               .required()
@@ -106,9 +108,9 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                               .maxLength(30)
                               .build(),
                           decoration: InputDecoration(
-                            hintText: 'Phone no',
+                            hintText: LocaleKeys.profile_phone_no.tr(),
                             hintStyle:
-                                TextStyle(color: Colors.black.withOpacity(0.2)),
+                                TextStyle(color: ThemeColor.hintTextColor(context)),
                             contentPadding:
                                 EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                             focusedBorder: OutlineInputBorder(
@@ -150,9 +152,9 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                           height: 40,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
-                          color: Env.value.secondaryColor,
+                          color: ThemeColor.secondaryColor(context),
                           onPressed: _validate,
-                          child: Text("Next",
+                          child: Text(LocaleKeys.reset_pass_next.tr(),
                               style: GoogleFonts.kanit(
                                   fontSize: 14,
                                   fontStyle: FontStyle.normal,
@@ -169,7 +171,7 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                           SizedBox(
                             width: 10,
                           ),
-                          Text("or sign in with", style: GoogleFonts.kanit()),
+                          Text(LocaleKeys.signinsignup_or_sign_in_with.tr(), style: GoogleFonts.kanit()),
                           SizedBox(
                             width: 10,
                           ),
@@ -198,6 +200,7 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                               "assets/images/icon_apple.svg",
                               width: 50,
                               height: 50,
+                              color: ThemeColor.fontprimaryColor(context),
                             )
                           ],
                         ),
@@ -206,12 +209,12 @@ class _SignUpPageState extends State<SignUpPage> with RouteAware{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Already have an account yet? ",
+                          Text(LocaleKeys.signinsignup_info_signin.tr()+" ",
                               style: GoogleFonts.kanit()),
                           GestureDetector(
-                            child: Text("Sign In",
+                            child: Text(LocaleKeys.signinsignup_title.tr(),
                                 style: GoogleFonts.kanit(
-                                    color: Env.value.secondaryColor)),
+                                    color: ThemeColor.secondaryColor(context))),
                             onTap: (){
                               Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SignInPage()));
                             },

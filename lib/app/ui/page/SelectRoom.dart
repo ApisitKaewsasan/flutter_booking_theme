@@ -6,6 +6,7 @@ import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppComponent.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Checkin.dart';
 import 'package:ds_book_app/app/model/pojo/Sort.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
@@ -13,6 +14,7 @@ import 'package:ds_book_app/app/ui/page/FilterPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/RoomDetailPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/CustomDialogBox.dart';
 
@@ -22,6 +24,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SelectRoom extends StatefulWidget {
   static const String PATH = '/selectroom';
@@ -65,14 +68,15 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
   Widget build(BuildContext context) {
     _init();
     return Scaffold(
+      backgroundColor: ThemeColor.FadedprimaryColor(context),
       appBar: AppToobar(
           header_type: Header_Type.baraction,
-          Title: "Select Room",
+          Title: LocaleKeys.select_room_title.tr(),
           onBack: () {
             Navigator.pop(context, true);
           }),
       body: Container(
-        color: Colors.white,
+        color: ThemeColor.primaryColor(context),
         child: SingleChildScrollView(
           child: Container(
             child: Column(
@@ -107,7 +111,6 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
 
   Widget Header_bar() {
     return Container(
-      color: Colors.white,
       child: Column(
         children: [
           Padding(
@@ -136,7 +139,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                                     style: GoogleFonts.kanit(
                                         fontSize: 14,
                                         fontStyle: FontStyle.normal,
-                                        color: Colors.black)),
+                                        color: ThemeColor.fontprimaryColor(context))),
                               );
                             } else {
                               return Padding(
@@ -146,7 +149,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                                     style: GoogleFonts.kanit(
                                         fontSize: 14,
                                         fontStyle: FontStyle.normal,
-                                        color: Colors.black)),
+                                        color: ThemeColor.fontprimaryColor(context))),
                               );
                             }
                           }),
@@ -169,20 +172,20 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                             if (snapshop.data != null) {
                               return Padding(
                                 padding: EdgeInsets.only(right: 5, left: 5),
-                                child: Text("${snapshop.data.length} Guests",
+                                child: Text("${snapshop.data.length} ${LocaleKeys.select_room_guests_btn.tr()}",
                                     style: GoogleFonts.kanit(
                                         fontSize: 14,
                                         fontStyle: FontStyle.normal,
-                                        color: Colors.black)),
+                                        color: ThemeColor.fontprimaryColor(context))),
                               );
                             } else {
                               return Padding(
                                 padding: EdgeInsets.only(right: 5, left: 5),
-                                child: Text("0 Guests",
+                                child: Text("0 ${LocaleKeys.select_room_guests_btn.tr()}",
                                     style: GoogleFonts.kanit(
                                         fontSize: 14,
                                         fontStyle: FontStyle.normal,
-                                        color: Colors.black)),
+                                        color: ThemeColor.fontprimaryColor(context))),
                               );
                             }
                           }),
@@ -212,15 +215,15 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset("assets/images/icon_soryby.svg",
-                                color: Env.value.secondaryColor),
+                                color: ThemeColor.secondaryColor(context)),
                             SizedBox(
                               width: 5,
                             ),
-                            Text("Sort by",
+                            Text(LocaleKeys.select_room_sort.tr(),
                                 style: GoogleFonts.kanit(
                                     fontSize: 14,
                                     fontStyle: FontStyle.normal,
-                                    color: Colors.black))
+                                    color: ThemeColor.fontprimaryColor(context)))
                           ],
                         ),
                       ),
@@ -246,16 +249,16 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                           children: [
                             SvgPicture.asset(
                               "assets/images/icon_filter.svg",
-                              color: Env.value.secondaryColor,
+                              color: ThemeColor.secondaryColor(context),
                             ),
                             SizedBox(
                               width: 8,
                             ),
-                            Text("Filter",
+                            Text(LocaleKeys.select_room_filter.tr(),
                                 style: GoogleFonts.kanit(
                                     fontSize: 14,
                                     fontStyle: FontStyle.normal,
-                                    color: Colors.black))
+                                    color: ThemeColor.fontprimaryColor(context)))
                           ],
                         ),
                       ),
@@ -281,7 +284,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                           ? Container(
                               margin: EdgeInsets.only(right: 10),
                               decoration: BoxDecoration(
-                                  color: Env.value.secondaryColor,
+                                  color: ThemeColor.secondaryColor(context),
                                   borderRadius: BorderRadius.all(Radius.circular(
                                           4.0) //                 <--- border radius here
                                       )),
@@ -290,7 +293,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                                     right: 10, left: 10, top: 8, bottom: 8),
                                 child: Row(
                                   children: [
-                                    Text("Sort By",
+                                    Text(LocaleKeys.select_room_sort.tr(),
                                         style: GoogleFonts.kanit(
                                             color: Colors.white)),
                                     SizedBox(width: 5),
@@ -316,7 +319,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                         return Container(
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
-                              color: Env.value.secondaryColor,
+                              color: ThemeColor.secondaryColor(context),
                               borderRadius: BorderRadius.all(Radius.circular(
                                       4.0) //                 <--- border radius here
                                   )),
@@ -325,7 +328,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                                 right: 10, left: 10, top: 8, bottom: 8),
                             child: Row(
                               children: [
-                                Text("Filter",
+                                Text(LocaleKeys.select_room_filter.tr(),
                                     style:
                                         GoogleFonts.kanit(color: Colors.white)),
                                 SizedBox(width: 5),
@@ -359,7 +362,6 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
   Widget CardSection({int index,String image}) {
     return GestureDetector(
       child: Container(
-        color: Colors.white,
         child: Column(
           children: [
             ClipRRect(
@@ -404,7 +406,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                                     : "assets/images/icon_save_off.svg",
                                 width: 15,
                                 height: 15,
-                                color: Env.value.secondaryColor),
+                                color: ThemeColor.secondaryColor(context)),
                           )
                         ],
                       ),
@@ -425,7 +427,7 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                   tag: "titletag_$index",
                   child: Text("Deluxe Room",
                       style: GoogleFonts.kanit(
-                          fontSize: 18, fontWeight: FontWeight.w500)),
+                          fontSize: 18, fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
                 )
               ],
             ),
@@ -434,14 +436,14 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                 Expanded(
                     child: Text("2nd floor with mountain view",
                         style: GoogleFonts.kanit(
-                            fontSize: 14, fontWeight: FontWeight.w300))),
+                            fontSize: 14, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))),
                 Container(
                     alignment: Alignment.topRight,
                     child: Text("฿500",
                         style: GoogleFonts.kanit(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
-                            color: Env.value.secondaryColor)))
+                            color: ThemeColor.secondaryColor(context))))
               ],
             ),
             Row(
@@ -451,14 +453,15 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                     children: [
                       SmoothStarRating(
                         allowHalfRating: true,
+                        isReadOnly: true,
                         onRated: (v) {
                           print(v);
                         },
                         starCount: 5,
                         rating: 2.5,
                         size: 20.0,
-                        color: Env.value.secondaryColor,
-                        borderColor: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
+                        borderColor: ThemeColor.secondaryColor(context),
                       ),
                       SizedBox(
                         width: 10,
@@ -467,19 +470,19 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
                           style: GoogleFonts.kanit(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Env.value.secondaryColor))
+                              color: ThemeColor.secondaryColor(context)))
                     ],
                   ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("nightly price per room",
+                    Text(LocaleKeys.select_room_nightperroom.tr(),
                         style: GoogleFonts.kanit(
-                            fontSize: 12, fontWeight: FontWeight.w300)),
-                    Text("(฿1,000 for 2 rooms, 4 guests)",
+                            fontSize: 12, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context))),
+                    Text("(฿1,000 ${LocaleKeys.select_room_for.tr()} 2 ${LocaleKeys.select_room_room.tr()}, 4 ${LocaleKeys.select_room_guests.tr()})",
                         style: GoogleFonts.kanit(
-                            fontSize: 12, fontWeight: FontWeight.w300))
+                            fontSize: 12, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))
                   ],
                 )
               ],
@@ -506,10 +509,6 @@ class _SelectRoomState extends State<SelectRoom> with RouteAware {
               stream: bloc_filter.sortlist,
               builder: (context, snapshot) {
                 return CustomDialogBox(
-                  title: "Custom Dialog Demo",
-                  descriptions:
-                      "Hii all this is a custom dialog in flutter and  you will be use in your flutter applications",
-                  text: "Yes",
                   sort_type: snapshot.data,
                   onSelectSort: (int val) {
                     bloc_filter.updateSort(val);

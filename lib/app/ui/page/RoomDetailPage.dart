@@ -8,16 +8,18 @@ import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppComponent.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/Checkin.dart';
 import 'package:ds_book_app/app/ui/page/BookingPage.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/SliderImage.dart';
 import 'package:ds_book_app/utility/widget/TabContent.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,14 +41,7 @@ class RoomDetailPage extends StatefulWidget {
   const RoomDetailPage({Key key, this.titiletag,this.imagetag}) : super(key: key);
 
 
-  static String generatePath({String titiletag,String imagetag}){
-    Map<String, dynamic> parma = {
-      'titiletag': titiletag,
-      'imagetag':imagetag
-    };
-    Uri uri = Uri(path: PATH, queryParameters: parma);
-    return uri.toString();
-  }
+
 
   @override
   _RoomDetailPageState createState() => _RoomDetailPageState();
@@ -87,11 +82,11 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
     _init();
 
     return Scaffold(
-      appBar: AppToobar(header_type: Header_Type.baraction, Title: "Room Detail",onBack: (){
+      backgroundColor: ThemeColor.primaryColor(context),
+      appBar: AppToobar(header_type: Header_Type.baraction, Title: LocaleKeys.select_room_room_detail.tr(),onBack: (){
         Navigator.pop(context, true);
       }),
         body: Container(
-          color: Colors.white,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -163,7 +158,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                                   style: GoogleFonts.kanit(
                                       fontSize: 14,
                                       fontStyle: FontStyle.normal,
-                                      color: Colors.black)),
+                                      color: ThemeColor.fontprimaryColor(context))),
                             );
                           } else {
                             return Padding(
@@ -173,7 +168,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                                   style: GoogleFonts.kanit(
                                       fontSize: 14,
                                       fontStyle: FontStyle.normal,
-                                      color: Colors.black)),
+                                      color: ThemeColor.fontprimaryColor(context))),
                             );
                           }
                         }),
@@ -196,20 +191,20 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                           if (snapshop.data != null) {
                             return Padding(
                               padding: EdgeInsets.only(right: 5, left: 5),
-                              child: Text("${snapshop.data.length} Guests",
+                              child: Text("${snapshop.data.length} ${LocaleKeys.select_room_guests_btn.tr()}",
                                   style: GoogleFonts.kanit(
                                       fontSize: 14,
                                       fontStyle: FontStyle.normal,
-                                      color: Colors.black)),
+                                      color: ThemeColor.fontprimaryColor(context))),
                             );
                           } else {
                             return Padding(
                               padding: EdgeInsets.only(right: 5, left: 5),
-                              child: Text("0 Guests",
+                              child: Text("0 ${LocaleKeys.select_room_guests_btn.tr()}",
                                   style: GoogleFonts.kanit(
                                       fontSize: 14,
                                       fontStyle: FontStyle.normal,
-                                      color: Colors.black)),
+                                      color: ThemeColor.fontprimaryColor(context))),
                             );
                           }
                         }),
@@ -246,7 +241,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                   //Navigator.pop(context, true);
                   _navigateToBookingPage(context);
                 },
-                child: Text("Book Now",
+                child: Text(LocaleKeys.select_room_booknow.tr(),
                     style: GoogleFonts.kanit(
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
@@ -270,7 +265,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
               tag: widget.titiletag,
               child: Text("Deluxe Room",
                   style: GoogleFonts.kanit(
-                      fontSize: 18, fontWeight: FontWeight.w500)),
+                      fontSize: 18, fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
             )
           ],
         ),
@@ -279,14 +274,14 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
             Expanded(
                 child: Text("2nd floor with mountain view",
                     style: GoogleFonts.kanit(
-                        fontSize: 14, fontWeight: FontWeight.w300))),
+                        fontSize: 14, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))),
             Container(
                 alignment: Alignment.topRight,
                 child: Text("฿500",
                     style: GoogleFonts.kanit(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
-                        color: Env.value.secondaryColor)))
+                        color: ThemeColor.secondaryColor(context))))
           ],
         ),
         Row(
@@ -296,14 +291,15 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                 children: [
                   SmoothStarRating(
                     allowHalfRating: true,
+                    isReadOnly: true,
                     onRated: (v) {
                       print(v);
                     },
                     starCount: 5,
                     rating: 2.5,
                     size: 20.0,
-                    color: Env.value.secondaryColor,
-                    borderColor: Env.value.secondaryColor,
+                    color: ThemeColor.secondaryColor(context),
+                    borderColor: ThemeColor.secondaryColor(context),
                   ),
                   SizedBox(
                     width: 10,
@@ -312,19 +308,19 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
                       style: GoogleFonts.kanit(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Env.value.secondaryColor))
+                          color: ThemeColor.secondaryColor(context)))
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("nightly price per room",
+                Text(LocaleKeys.select_room_nightperroom.tr(),
                     style: GoogleFonts.kanit(
-                        fontSize: 12, fontWeight: FontWeight.w300)),
-                Text("(฿1,000 for 2 rooms, 4 guests)",
+                        fontSize: 12, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context))),
+                Text("(฿1,000 for 2 ${LocaleKeys.select_room_room.tr()}, 4 ${LocaleKeys.select_room_guests.tr()})",
                     style: GoogleFonts.kanit(
-                        fontSize: 12, fontWeight: FontWeight.w300))
+                        fontSize: 12, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))
               ],
             )
           ],
@@ -346,7 +342,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> with RouteAware{
   _navigateToBookingPage(BuildContext context) async {
 
     if(await Usermanager().isLogin()){
-      Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: BookingPage()));
+      Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: BookingPage(titiletag: widget.titiletag,imagetag: widget.imagetag,)));
     }else{
       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SignInPage()));
     }

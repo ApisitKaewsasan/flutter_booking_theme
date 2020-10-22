@@ -4,10 +4,12 @@ import 'dart:async';
 
 import 'package:ds_book_app/app/model/core/AppBookingApplication.dart';
 import 'package:ds_book_app/app/model/pojo/Checkin.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Check_Bloc{
   final AppBookingApplication _application;
@@ -16,7 +18,7 @@ class Check_Bloc{
 
   DateTime selectedPeriodStart;
   DateTime selectedPeriodEnd;
-  String total = "0 nights";
+  String total = "0 ${LocaleKeys.mybooking_night.tr()}";
 
   Check_Bloc(this._application) {
     _init();

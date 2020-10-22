@@ -5,6 +5,7 @@ import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/model/pojo/response/User.dart';
@@ -15,8 +16,10 @@ import 'package:ds_book_app/app/ui/page/ProfilePage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/app/ui/page/SignUpPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
+import 'package:ds_book_app/utility/widget/RestartWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:form_validator/form_validator.dart';
@@ -29,6 +32,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignInPage extends StatefulWidget {
   static const String PATH = '/signinpage';
@@ -81,13 +85,13 @@ class _SignInPageState extends State<SignInPage> {
       RegExp nameRegExp = RegExp('[a-zA-Z]');
     // var stats_form = _form.currentState.validate();
     if(_username.text.isEmpty || _password.text.isEmpty){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "username or password not Empty");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_username_Empty.tr());
     }else if(!nameRegExp.hasMatch(_username.text) && _username.text.length < 10){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "phone Incorrect format");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_phone_incorrect_format.tr());
     }else if(!validator.email(_username.text)){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "email Incorrect format");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_email_incorrect_format.tr());
     }else if(!validator.password(_password.text)){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "password format is not strong");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_password_format_is_not_strong.tr());
     }else{
       _progressDialog.show();
        if(Usermanager.USERNAME_DEMO == _username.text && Usermanager.PASSWORD_DEMO == _password.text){
@@ -97,13 +101,13 @@ class _SignInPageState extends State<SignInPage> {
            _navigateToProfilePage(context);
          });
        }else{
-         FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "username or password Incorrect");
+         FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.signinsignup_username_or_password_incorrect.tr());
        }
     }
   }
 
   init() async {
-    _progressDialog = await FunctionHelper().ProgressDiolog(context: context,message: "Loadding...");
+    _progressDialog = await FunctionHelper().ProgressDiolog(context: context,message: LocaleKeys.signinsignup_loadding.tr());
   }
 
   Future<Null> _login() async {
@@ -147,10 +151,10 @@ class _SignInPageState extends State<SignInPage> {
     init();
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Sign In",
+          Title: LocaleKeys.signinsignup_title.tr(),
           elevation: 0,
           onBack: () {
             Navigator.pop(context, false);
@@ -166,17 +170,17 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Sign In",
+                    Text(LocaleKeys.signinsignup_title.tr(),
                         style: GoogleFonts.kanit(
-                            color: Env.value.secondaryColor, fontSize: 24)),
+                            color: ThemeColor.secondaryColor(context), fontSize: 24, )),
                     SizedBox(height: 20),
-                    Text("Email / Phone no.", style: GoogleFonts.kanit()),
+                    Text(LocaleKeys.reset_pass_enailandphone.tr(), style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
                     SizedBox(height: 5),
                     Container(
                       height: 40,
                       child: TextFormField(
                         controller: _username,
-                        cursorColor: Env.value.secondaryColor,
+                        cursorColor: ThemeColor.secondaryColor(context),
                         keyboardType: TextInputType.text,
                         validator: ValidationBuilder()
                             .required()
@@ -184,9 +188,9 @@ class _SignInPageState extends State<SignInPage> {
                             .maxLength(30)
                             .build(),
                         decoration: InputDecoration(
-                          hintText: 'username',
+                          hintText: LocaleKeys.signinsignup_username.tr(),
                           hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(0.2)),
+                              TextStyle(color: ThemeColor.hintTextColor(context)),
                           contentPadding:
                               EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                           focusedBorder: OutlineInputBorder(
@@ -215,20 +219,20 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                         ),
-                        style: GoogleFonts.kanit(fontSize: 15),
+                        style: GoogleFonts.kanit(fontSize: 15,color: ThemeColor.fontprimaryColor(context)),
                         onTap: () {
                           //_navigateToTransferfromPage(context);
                         },
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text("Password", style: GoogleFonts.kanit()),
+                    Text(LocaleKeys.signinsignup_password.tr(), style: GoogleFonts.kanit()),
                     SizedBox(height: 5),
                     Container(
                       height: 40,
                       child: TextFormField(
                         controller: _password,
-                        cursorColor: Env.value.secondaryColor,
+                        cursorColor: ThemeColor.secondaryColor(context),
                         keyboardType: TextInputType.text,
                         obscureText: _passwordVisible,
                         validator: ValidationBuilder()
@@ -237,9 +241,9 @@ class _SignInPageState extends State<SignInPage> {
                             .maxLength(30)
                             .build(),
                         decoration: InputDecoration(
-                            hintText: 'password',
+                            hintText: LocaleKeys.signinsignup_password.tr(),
                             hintStyle:
-                                TextStyle(color: Colors.black.withOpacity(0.2)),
+                                TextStyle(color: ThemeColor.hintTextColor(context)),
                             contentPadding:
                                 EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                             focusedBorder: OutlineInputBorder(
@@ -275,7 +279,7 @@ class _SignInPageState extends State<SignInPage> {
                                   semanticLabel: _passwordVisible
                                       ? 'hide password'
                                       : 'show password',
-                                  color: Colors.black.withOpacity(0.2),
+                                  color: ThemeColor.suffixIconColor(context),
                                   size: 20,
                                 ),
                                 onPressed: () {
@@ -297,21 +301,20 @@ class _SignInPageState extends State<SignInPage> {
                         height: 40,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                         onPressed: () => _validate(),
-                        child: Text("Sign In",
+                        child: Text(LocaleKeys.signinsignup_title.tr(),
                             style: GoogleFonts.kanit(
                                 fontSize: 14,
-                                fontStyle: FontStyle.normal,
-                                color: Colors.white)),
+                                color: ThemeColor.ButtonColor(context))),
                       ),
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
                       child: Center(
-                          child: Text("Forget Password ?",
+                          child: Text("${LocaleKeys.changepassword_forget_pass.tr()}",
                               style: GoogleFonts.kanit(
-                                  color: Env.value.secondaryColor))),
+                                  color: ThemeColor.secondaryColor(context)))),
                       onTap: () {
                         _navigateToForgetPasswordPage(context);
                       },
@@ -326,7 +329,7 @@ class _SignInPageState extends State<SignInPage> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text("or sign in with", style: GoogleFonts.kanit()),
+                        Text(LocaleKeys.signinsignup_or_sign_in_with.tr(), style: GoogleFonts.kanit()),
                         SizedBox(
                           width: 10,
                         ),
@@ -368,6 +371,7 @@ class _SignInPageState extends State<SignInPage> {
                               "assets/images/icon_apple.svg",
                               width: 50,
                               height: 50,
+                              color: ThemeColor.fontprimaryColor(context),
                             ),
                           onTap: () async {
                             final credential = await SignInWithApple.getAppleIDCredential(
@@ -386,15 +390,15 @@ class _SignInPageState extends State<SignInPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have an account yet? ",
-                            style: GoogleFonts.kanit()),
+                        Text(LocaleKeys.signinsignup_info_signup.tr()+" ",
+                            style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
                         GestureDetector(
-                          child: Text("Sign Up",
+                          child: Text(LocaleKeys.signinsignup_signup.tr(),
                               style: GoogleFonts.kanit(
-                                  color: Env.value.secondaryColor)),
+                                  color: ThemeColor.secondaryColor(context))),
                           onTap: ()  {
-                            _navigateToSigUpPage(context);
-
+                             _navigateToSigUpPage(context);
+                            //RestartWidget.of(context).restartApp();
                           },
                         ),
                       ],

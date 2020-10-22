@@ -3,15 +3,17 @@ import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
 import 'package:ds_book_app/app/ui/page/ForgetPasswordPage.dart';
 import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,9 +44,9 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
   void _validate() {
    // _form.currentState.validate();
       if(_oldpassword.text.isEmpty && _newpassword.text.isEmpty && _confirmpassword.text.isEmpty){
-        FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "Information not available");
+        FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.changepassword_information_not_available.tr());
       }else if(_newpassword.text == _confirmpassword.text.isEmpty){
-        FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "Passwords do not match");
+        FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.changepassword_passwords_do_not_match.tr());
       }else{
 
       }
@@ -55,12 +57,11 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
 
     return Scaffold(
       key: _scaffoldKey,
-        backgroundColor: Colors.white,
-        appBar: AppToobar(header_type: Header_Type.barnon,Title: "Change Password",onBack: (){
+        backgroundColor: ThemeColor.primaryColor(context),
+        appBar: AppToobar(header_type: Header_Type.barnon,Title: LocaleKeys.changepassword_title.tr(),onBack: (){
           Navigator.pop(context, false);
         },),
         body: Container(
-          color: Colors.white,
           child: Form(
             key: _form,
             child: ListView(
@@ -71,7 +72,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Change Password",style: GoogleFonts.kanit(color: Env.value.secondaryColor,fontSize: 22)),
+                      Text(LocaleKeys.changepassword_title.tr(),style: GoogleFonts.kanit(color: ThemeColor.secondaryColor(context),fontSize: 22)),
                       SizedBox(height: 20),
                       _formInput(),
                       SizedBox(height: 15),
@@ -81,9 +82,9 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                           height: 40,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
-                          color: Env.value.secondaryColor,
+                          color: ThemeColor.secondaryColor(context),
                           onPressed: () =>_validate(),
-                          child: Text("Change Password",
+                          child: Text(LocaleKeys.changepassword_title.tr(),
                               style: GoogleFonts.kanit(
                                   fontSize: 14,
                                   fontStyle: FontStyle.normal,
@@ -96,7 +97,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.center,
                             height: 40,
-                            child: Text("Forget Password?",style: GoogleFonts.kanit(color: Env.value.secondaryColor))),
+                            child: Text(LocaleKeys.changepassword_forget_pass.tr(),style: GoogleFonts.kanit(color: ThemeColor.secondaryColor(context)))),
                         onTap: (){
                           Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: ForgetPasswordPage()));
                         },
@@ -119,19 +120,19 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 10),
-        Text("Old password",style: GoogleFonts.kanit()),
+        Text(LocaleKeys.changepassword_old_input.tr(),style: GoogleFonts.kanit()),
         SizedBox(height: 5),
         Container(
           height: 65,
           child: TextFormField(
             controller: _oldpassword,
-            cursorColor: Env.value.secondaryColor,
+            cursorColor: ThemeColor.secondaryColor(context),
             keyboardType: TextInputType.text,
             validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
             obscureText:_passwordOldVisible,
             decoration: InputDecoration(
-                hintText: '',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                hintText: LocaleKeys.changepassword_old_input.tr(),
+                hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                 contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -163,7 +164,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                     icon: Icon(
                       _passwordOldVisible ? Icons.visibility : Icons.visibility_off,
                       semanticLabel: _passwordOldVisible ? 'hide password' : 'show password',
-                      color: Colors.black.withOpacity(0.2),
+                      color: ThemeColor.suffixIconColor(context),
                       size: 20,
                     ),
                     onPressed: () {
@@ -179,19 +180,19 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
             },
           ),
         ),
-        Text("New Password",style: GoogleFonts.kanit()),
+        Text(LocaleKeys.changepassword_new_input.tr(),style: GoogleFonts.kanit()),
         SizedBox(height: 5),
         Container(
           height: 65,
           child: TextFormField(
             controller: _newpassword,
-            cursorColor: Env.value.secondaryColor,
+            cursorColor: ThemeColor.secondaryColor(context),
             keyboardType: TextInputType.text,
             validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
             obscureText:_passwordVisible,
             decoration: InputDecoration(
-                hintText: '',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                hintText: LocaleKeys.changepassword_new_input.tr(),
+                hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                 contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -223,7 +224,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                     icon: Icon(
                       _passwordVisible ? Icons.visibility : Icons.visibility_off,
                       semanticLabel: _passwordVisible ? 'hide password' : 'show password',
-                      color: Colors.black.withOpacity(0.2),
+                      color: ThemeColor.suffixIconColor(context),
                       size: 20,
                     ),
                     onPressed: () {
@@ -239,19 +240,19 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
             },
           ),
         ),
-        Text("Confirm new password",style: GoogleFonts.kanit()),
+        Text(LocaleKeys.changepassword_confirm_new.tr(),style: GoogleFonts.kanit()),
         SizedBox(height: 5),
         Container(
           height: 65,
           child: TextFormField(
             controller: _confirmpassword,
-            cursorColor: Env.value.secondaryColor,
+            cursorColor: ThemeColor.secondaryColor(context),
             keyboardType: TextInputType.text,
             validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
             obscureText:_passwordConfirmVisible,
             decoration: InputDecoration(
-                hintText: '',
-                hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                hintText: LocaleKeys.changepassword_confirm_new.tr(),
+                hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                 contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -284,7 +285,7 @@ class _ChangePasswordState extends State<ChangePasswordPage> {
                     icon: Icon(
                       _passwordConfirmVisible ? Icons.visibility : Icons.visibility_off,
                       semanticLabel: _passwordConfirmVisible ? 'hide password' : 'show password',
-                      color: Colors.black.withOpacity(0.2),
+                      color: ThemeColor.suffixIconColor(context),
                       size: 20,
                     ),
                     onPressed: () {

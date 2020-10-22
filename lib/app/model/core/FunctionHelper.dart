@@ -1,8 +1,10 @@
 
 
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class FunctionHelper{
   static String ReportDateTwo({String date}){
@@ -39,7 +41,7 @@ class FunctionHelper{
             duration: Duration(seconds: 2),
             action: SnackBarAction(
               textColor: Colors.amber,
-              label: 'OK',
+              label: LocaleKeys.payment_ok.tr(),
               onPressed: () {
                 scaffoldKey.currentState.hideCurrentSnackBar();
               },

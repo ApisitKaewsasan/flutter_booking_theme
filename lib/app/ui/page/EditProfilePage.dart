@@ -7,6 +7,7 @@ import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/bloc/User_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/model/pojo/response/User.dart';
 import 'package:ds_book_app/app/ui/page/CheckinPage.dart';
@@ -14,9 +15,10 @@ import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/app/ui/page/VerificationPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,11 +62,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void _validate() {
     if(_name.text.isEmpty || _email.text.isEmpty || _phone.text.isEmpty){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "Please fill out all information");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.profile_please_fill_out_all_information.tr());
     }else if(!validator.email(_email.text)){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "email Incorrect format");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.profile_email_incorrect_format.tr());
     }else if(_phone.text.length<10){
-      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: "Invalid phone number");
+      FunctionHelper.SnackBarShow(scaffoldKey: _scaffoldKey,message: LocaleKeys.profile_invalid_phone_number.tr());
     }else{
 
     }
@@ -75,16 +77,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
     init();
     return Scaffold(
       key: _scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
-          Title: "Profile",
+          Title: LocaleKeys.profile_profile_title.tr(),
           onBack: () {
             Navigator.pop(context, false);
           },
         ),
         body: Container(
-          color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,12 +141,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                       border: Border.all(color: Colors.grey[200]),
                       boxShadow: [
-                        BoxShadow(
+                        MediaQuery.of(context).platformBrightness==Brightness.light?BoxShadow(
                           color: Colors.white.withOpacity(0.9),
                           spreadRadius: 10,
                           blurRadius: 12,
                           offset: Offset(0, 6), // changes position of shadow
-                        ),
+                        ):BoxShadow(),
                       ]),
                   child: StreamBuilder(
                     stream: user_bloc.getUser,
@@ -177,13 +178,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: Container(
                     width: 120,
                     height: 32,
-                    color: Env.value.secondaryColor,
+                    color: ThemeColor.secondaryColor(context),
                     child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
-                      color: Env.value.secondaryColor,
+                      color: ThemeColor.secondaryColor(context),
                        onPressed: () => captureImage(ImageSource.gallery),
-                      child: Text("Edit Photo",
+                      child: Text(LocaleKeys.profile_edit_photo.tr(),
                           style: GoogleFonts.kanit(
                               fontSize: 14,
                               fontStyle: FontStyle.normal,
@@ -198,9 +199,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     width: 120,
                     height: 30,
                     child: OutlineButton(
-                      child: Text('Remove Photo',
+                      child: Text(LocaleKeys.profile_remove_photo.tr(),
                           style: GoogleFonts.kanit(
-                              color: Env.value.secondaryColor,
+                              color: ThemeColor.secondaryColor(context),
                               fontWeight: FontWeight.w400,
                               fontSize: 13)),
                       onPressed: () {
@@ -208,11 +209,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       },
                       //callback when button is clicked
                       borderSide: BorderSide(
-                        color: Env.value.secondaryColor, //Color of the border
+                        color: ThemeColor.secondaryColor(context), //Color of the border
                         style: BorderStyle.solid, //Style of the border
                         width: 1, //width of the border
                       ),
-                      highlightedBorderColor: Env.value.secondaryColor,
+                      highlightedBorderColor: ThemeColor.secondaryColor(context),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
                     ))
@@ -244,7 +245,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       borderRadius: BorderRadius.circular(5)),
                   color: Color(ColorUtils.hexToInt('#D65653')),
                   onPressed: ()=>_validate(),
-                  child: Text("Save",
+                  child: Text(LocaleKeys.profile_save.tr(),
                       style:
                           GoogleFonts.kanit(fontSize: 16, color: Colors.white)),
                 ),
@@ -264,18 +265,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Your details",
+              Text(LocaleKeys.profile_youdetail.tr(),
                   style: GoogleFonts.kanit(
-                      color: Env.value.secondaryColor, fontSize: 22)),
+                      color: ThemeColor.secondaryColor(context), fontSize: 22)),
               SizedBox(height: 10),
-              Text("Full name", style: GoogleFonts.kanit()),
+              Text(LocaleKeys.profile_fullname.tr(), style: GoogleFonts.kanit()),
               SizedBox(height: 5),
               Container(
                 height: 65,
                 child: TextFormField(
                   // controller: _newpassword,
                   controller: _name,
-                  cursorColor: Env.value.secondaryColor,
+                  cursorColor: ThemeColor.secondaryColor(context),
                   keyboardType: TextInputType.text,
                   validator: ValidationBuilder()
                       .required()
@@ -284,8 +285,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       .build(),
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: '',
-                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                    hintText: LocaleKeys.profile_youdetail.tr(),
+                    hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -319,14 +320,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   },
                 ),
               ),
-              Text("Email", style: GoogleFonts.kanit()),
+              Text(LocaleKeys.profile_email.tr(), style: GoogleFonts.kanit()),
               SizedBox(height: 5),
               Container(
                 height: 65,
                 child: TextFormField(
                   // controller: _confirmpassword,
                   controller: _email,
-                  cursorColor: Env.value.secondaryColor,
+                  cursorColor: ThemeColor.secondaryColor(context),
                   keyboardType: TextInputType.emailAddress,
                   validator: ValidationBuilder()
                       .required()
@@ -335,8 +336,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       .build(),
                   //bscureText:_passwordConfirmVisible,
                   decoration: InputDecoration(
-                    hintText: '',
-                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                    hintText: LocaleKeys.profile_email.tr(),
+                    hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -370,14 +371,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   },
                 ),
               ),
-              Text("Phone no.", style: GoogleFonts.kanit()),
+              Text(LocaleKeys.profile_phone_no.tr(), style: GoogleFonts.kanit()),
               SizedBox(height: 5),
               Container(
                 height: 65,
                 child: TextFormField(
                   controller: _phone,
                   // controller: _confirmpassword,
-                  cursorColor: Env.value.secondaryColor,
+                  cursorColor: ThemeColor.secondaryColor(context),
                   keyboardType: TextInputType.phone,
                   validator: ValidationBuilder()
                       .required()
@@ -386,8 +387,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       .build(),
                   //bscureText:_passwordConfirmVisible,
                   decoration: InputDecoration(
-                    hintText: '',
-                    hintStyle: TextStyle(color: Colors.black.withOpacity(0.2)),
+                    hintText: LocaleKeys.profile_phone_no.tr(),
+                    hintStyle: TextStyle(color: ThemeColor.hintTextColor(context)),
                     contentPadding: EdgeInsets.fromLTRB(15.0, 0.0, 20.0, 0.0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -429,12 +430,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: Container(
             margin: EdgeInsets.only(left: 15,right: 15),
             child: ListTile(
-              leading: Icon(FontAwesome.lock, color: Env.value.secondaryColor),
+              leading: Icon(FontAwesome.lock, color: ThemeColor.secondaryColor(context)),
               title: Text(
-                "Change Password",
-                style: GoogleFonts.kanit(),
+                LocaleKeys.profile_change_password.tr(),
+                style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)),
               ),
-              trailing: Icon(Ionicons.ios_arrow_forward,color: Colors.black),
+              trailing: Icon(Ionicons.ios_arrow_forward,color: ThemeColor.fontprimaryColor(context)),
             ),
           ),
           onTap: (){

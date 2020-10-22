@@ -3,12 +3,15 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:ds_book_app/app/bloc/Filter_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppComponent.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Filter.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/Check_Box.dart';
 import 'package:flutter/material.dart';
 import 'package:ds_book_app/config/Env.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class FilterPage extends StatefulWidget {
 
@@ -49,13 +52,13 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
   Widget build(BuildContext context) {
     _init();
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
       appBar:
-      AppToobar(header_type: Header_Type.baraction, Title: "Filter",onBack: (){
+      AppToobar(header_type: Header_Type.baraction, Title: LocaleKeys.select_room_filter.tr(),onBack: (){
          bloc_filter.deleteFilter();
          Navigator.pop(context, false);
       }),
       body: Container(
-        color: Colors.white,
         child: Column(
           children: <Widget>[
             Expanded(
@@ -92,7 +95,7 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
                           Navigator.pop(context, true);
 
                         },
-                        child: Text("Search",
+                        child: Text(LocaleKeys.select_room_seatch.tr(),
                             style: GoogleFonts.kanit(
                                 fontSize: 16,
                                 fontStyle: FontStyle.normal,
@@ -112,17 +115,17 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
     return ListView(
       children: [
         SizedBox(height: 15,),
-        Text("Filter", style: GoogleFonts.kanit(fontSize: 22,fontWeight: FontWeight.w500),),
+        Text(LocaleKeys.select_room_filter.tr(), style: GoogleFonts.kanit(fontSize: 22,fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context)),),
         SizedBox(height: 10,),
-        Text("Room Type", style: GoogleFonts.kanit(fontSize: 18,fontWeight: FontWeight.w500),),
+        Text(LocaleKeys.select_room_room_type.tr(), style: GoogleFonts.kanit(fontSize: 18,fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "Single",value: filter.single,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_single.tr(),value: filter.single,onCheckBox:(int value){
               bloc_filter.updateFilter("single", filter.single==1?0:1);
             }),),
         SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "Double",value: filter.double,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_double.tr(),value: filter.double,onCheckBox:(int value){
               bloc_filter.updateFilter("double", filter.double==1?0:1);
             }),)
           ],
@@ -130,25 +133,25 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "Deluxe",value: filter.deluxe,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_deluxe.tr(),value: filter.deluxe,onCheckBox:(int value){
               bloc_filter.updateFilter("deluxe", filter.deluxe==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "Super Deluxe",value: filter.superdeluxe,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_superdeluxe.tr(),value: filter.superdeluxe,onCheckBox:(int value){
               bloc_filter.updateFilter("superdeluxe", filter.superdeluxe==1?0:1);
             }),)
           ],
         ),
         SizedBox(height: 25,),
-        Text("Popular Filters", style: GoogleFonts.kanit(fontSize: 18,fontWeight: FontWeight.w500),),
+        Text(LocaleKeys.select_room_popular_type.tr(), style: GoogleFonts.kanit(fontSize: 18,fontWeight: FontWeight.w500),),
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "Swimming Pool",value: filter.swimming,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_swimming.tr(),value: filter.swimming,onCheckBox:(int value){
               bloc_filter.updateFilter("swimming", filter.swimming==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "Free WiFi",value: filter.wifi,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_freewifi.tr(),value: filter.wifi,onCheckBox:(int value){
               bloc_filter.updateFilter("wifi", filter.wifi==1?0:1);
             }),)
           ],
@@ -156,11 +159,11 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "Parking",value: filter.parking,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_parking.tr(),value: filter.parking,onCheckBox:(int value){
               bloc_filter.updateFilter("parking", filter.parking==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "Cable TV",value: filter.cabletv,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_cabletb.tr(),value: filter.cabletv,onCheckBox:(int value){
               bloc_filter.updateFilter("cabletv", filter.cabletv==1?0:1);
             }),)
           ],
@@ -170,11 +173,11 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "1st Floor",value: filter.floorone,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_1_floor.tr(),value: filter.floorone,onCheckBox:(int value){
               bloc_filter.updateFilter("floorone", filter.floorone==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "2nd Floor",value: filter.floortwo,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_2_floor.tr(),value: filter.floortwo,onCheckBox:(int value){
               bloc_filter.updateFilter("floortwo", filter.floortwo==1?0:1);
             }),)
           ],
@@ -182,11 +185,11 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "3rd Floor",value: filter.floorthee,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_3_floor.tr(),value: filter.floorthee,onCheckBox:(int value){
               bloc_filter.updateFilter("floorthee", filter.floorthee==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "4th Floor",value: filter.floorfour,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_4_floor.tr(),value: filter.floorfour,onCheckBox:(int value){
               bloc_filter.updateFilter("floorfour", filter.floorfour==1?0:1);
             }),)
           ],
@@ -196,11 +199,11 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "1 Star",value: filter.starone,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_1_star.tr(),value: filter.starone,onCheckBox:(int value){
               bloc_filter.updateFilter("starone", filter.starone==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "2 Stars",value: filter.startwo,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_2_star.tr(),value: filter.startwo,onCheckBox:(int value){
               bloc_filter.updateFilter("startwo", filter.startwo==1?0:1);
             }),)
           ],
@@ -208,11 +211,11 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
         SizedBox(height: 8,),
         Row(
           children: [
-            Expanded(child: Check_Box(title: "3 Stars",value: filter.starthee,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_3_star.tr(),value: filter.starthee,onCheckBox:(int value){
               bloc_filter.updateFilter("starthee", filter.starthee==1?0:1);
             }),),
             SizedBox(width: 15,),
-            Expanded(child: Check_Box(title: "4 Stars",value: filter.starfour,onCheckBox:(int value){
+            Expanded(child: Check_Box(title: LocaleKeys.select_room_4_star.tr(),value: filter.starfour,onCheckBox:(int value){
               bloc_filter.updateFilter("starfour", filter.starfour==1?0:1);
             }),)
           ],
@@ -223,9 +226,9 @@ class _FilterPageState extends State<FilterPage> with RouteAware{
             children: [
               Row(
                 children: [
-                  Transform.rotate(angle: 90,child: Icon(Icons.replay,color: Env.value.secondaryColor,)),
+                  Transform.rotate(angle: 90,child: Icon(Icons.replay,color: ThemeColor.secondaryColor(context),)),
                   SizedBox(width: 7,),
-                  Text('Reset Filter', style: GoogleFonts.kanit(fontSize: 18,color: Env.value.secondaryColor,fontWeight: FontWeight.w500))
+                  Text(LocaleKeys.select_room_reset_filtter.tr(), style: GoogleFonts.kanit(fontSize: 18,color: ThemeColor.secondaryColor(context),fontWeight: FontWeight.w500))
                 ],
               )
             ],

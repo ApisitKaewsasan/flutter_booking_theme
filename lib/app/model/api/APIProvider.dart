@@ -8,7 +8,7 @@ import 'package:ds_book_app/utility/log/DioLogger.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'APIProvider.g.dart';
+part '_APIProvider.dart';
 
 abstract class APIProvider{
   factory APIProvider(Dio dio, {String baseUrl}) = _APIProvider;

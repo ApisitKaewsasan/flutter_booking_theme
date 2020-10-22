@@ -1,10 +1,12 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/ui/page/ReviewNowPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,13 +28,13 @@ class _MyReviewPageState extends State<MyReviewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColor.primaryColor(context),
       appBar: AppToobar(
         header_type: Header_Type.barnon,
-        Title: "My Review",
+        Title: LocaleKeys.myreview_myreview_title.tr(),
         onBack: () => Navigator.pop(context, false),
       ),
       body: Container(
-        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,10 +76,10 @@ class _MyReviewPageState extends State<MyReviewPage> {
               children: [
                 Text("Deluxe Room",
                     style: GoogleFonts.kanit(
-                        fontSize: 18, fontWeight: FontWeight.w500)),
+                        fontSize: 18, fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
                 Text("2nd floor with mountain view",
                   style: GoogleFonts.kanit(
-                      fontSize: 13, fontWeight: FontWeight.w300),maxLines: 1,),
+                      fontSize: 13, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)),maxLines: 1,),
                 Row(
                   children: [
                     SmoothStarRating(
@@ -88,8 +90,8 @@ class _MyReviewPageState extends State<MyReviewPage> {
                       starCount: 5,
                       rating: 2.5,
                       size: 20.0,
-                      color: Env.value.secondaryColor,
-                      borderColor: Env.value.secondaryColor,
+                      color: ThemeColor.secondaryColor(context),
+                      borderColor: ThemeColor.secondaryColor(context),
                     ),
                     SizedBox(
                       width: 15,
@@ -98,7 +100,7 @@ class _MyReviewPageState extends State<MyReviewPage> {
                         style: GoogleFonts.kanit(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Env.value.secondaryColor))
+                            color: ThemeColor.secondaryColor(context)))
                   ],
                 ),
                 SizedBox(
@@ -113,13 +115,13 @@ class _MyReviewPageState extends State<MyReviewPage> {
                       child: Container(
                         width: 120,
                         height: 32,
-                        color: Env.value.secondaryColor,
+                        color: ThemeColor.secondaryColor(context),
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
-                          color: Env.value.secondaryColor,
+                          color: ThemeColor.secondaryColor(context),
                            onPressed: () =>_navigateToReviewNowPage(context),
-                          child: Text("Review Now",
+                          child: Text(LocaleKeys.myreview_reviewnow.tr(),
                               style: GoogleFonts.kanit(
                                   fontSize: 14,
                                   fontStyle: FontStyle.normal,

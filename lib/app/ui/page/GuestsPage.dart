@@ -1,13 +1,16 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../utility/widget/Guests_From.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GuestsPage extends StatefulWidget {
 
@@ -25,13 +28,13 @@ class _GuestsPageState extends State<GuestsPage> {
   Widget build(BuildContext context) {
     bloc = Guests_Bloc(AppProvider.getApplication(context));
     return Scaffold(
-      appBar: AppToobar(header_type: Header_Type.barnon,Title:"Room Options",onBack: (){
+       backgroundColor: ThemeColor.primaryColor(context),
+      appBar: AppToobar(header_type: Header_Type.barnon,Title:LocaleKeys.room_optin_title.tr(),onBack: (){
         bloc.DeleteAllRoom();
         Navigator.pop(context,false);
       }),
 
       body: Container(
-        color: Colors.white,
         child: StreamBuilder(
           stream: bloc.feedList,
           builder: (context, snapshot) {
@@ -45,15 +48,15 @@ class _GuestsPageState extends State<GuestsPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("+ Add a room",
+                        Text("+ ${LocaleKeys.room_optin_add_room.tr()}",
                             style: GoogleFonts.kanit(
                                 fontSize: 17,
-                                color: Env.value.secondaryColor)),
+                                color: ThemeColor.secondaryColor(context))),
                         Text("No reservation was found.",
                             style: GoogleFonts.kanit(
                                 fontSize: 18,
                                 fontStyle: FontStyle.normal,
-                                color: Colors.black))
+                                color: ThemeColor.fontprimaryColor(context)))
                       ],
                     ),
                     onTap: ()=>bloc.Add_Guests(),
@@ -99,10 +102,10 @@ class _GuestsPageState extends State<GuestsPage> {
                                 GestureDetector(
                                   child: Row(
                                     children: [
-                                      Text("+ Add a room",
+                                      Text("+ ${LocaleKeys.room_optin_add_room.tr()}",
                                           style: GoogleFonts.kanit(
                                               fontSize: 15,
-                                              color: Env.value.secondaryColor))
+                                              color: ThemeColor.secondaryColor(context)))
                                     ],
                                   ),
                                   onTap: () {
@@ -148,7 +151,7 @@ class _GuestsPageState extends State<GuestsPage> {
                   Navigator.pop(context, true);
 
                 },
-                child: Text("Done",
+                child: Text(LocaleKeys.selectdate_done.tr(),
                     style: GoogleFonts.kanit(
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
@@ -172,7 +175,7 @@ class _GuestsPageState extends State<GuestsPage> {
       children += listItem[i].children_count;
     }
 
-    return "${room} rooms, ${adults} adults, ${children} children";
+    return "${room} ${LocaleKeys.select_room_room.tr()}, ${adults} ${LocaleKeys.booking_adults.tr()}, ${children} ${LocaleKeys.booking_children.tr()}";
   }
   
 

@@ -33,8 +33,10 @@ class _SplashPageState extends State<SplashPage>
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
 
+
     startTimer();
   }
+
 
   @override
   Widget build(BuildContext context) {

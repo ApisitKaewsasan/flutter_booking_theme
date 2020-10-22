@@ -3,6 +3,7 @@ import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/bloc/Guests_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/pojo/Guests.dart';
 import 'package:ds_book_app/app/ui/page/BookedPage.dart';
 import 'package:ds_book_app/app/ui/page/CancelledPage.dart';
@@ -12,11 +13,13 @@ import 'package:ds_book_app/app/ui/page/GuestsPage.dart';
 import 'package:ds_book_app/app/ui/page/SelectRoom.dart';
 import 'package:ds_book_app/app/ui/page/UnpaidPage.dart';
 import 'package:ds_book_app/config/Env.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:intl/intl.dart';
 
 class MyBookingPage extends StatefulWidget {
@@ -34,26 +37,26 @@ class _MyBookingPageState extends State<MyBookingPage> with SingleTickerProvider
     return DefaultTabController(
       length: tab_count,
       child: Scaffold(
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
         header_type: Header_Type.barnon,
-        Title: "My Booking",
+        Title: LocaleKeys.mybooking_mybooking_title.tr(),
         onBack: () => Navigator.pop(context, false),
       ),
         body: Container(
-          color: Colors.grey.shade200,
           child: Column(
             children: <Widget>[
               SizedBox(
                 height: 50,
                 child: Container(
-                  color: Colors.white,
+                  color: ThemeColor.primaryColor(context),
                   child: TabBar(
                     isScrollable: true,
                     tabs: [
-                      _tabbar(title: "Unpaid",message: false),
-                      _tabbar(title: "Booked",message: true),
-                      _tabbar(title: "Completed",message: true),
-                      _tabbar(title: "Cancelled",message: false),
+                      _tabbar(title: LocaleKeys.mybooking_unpaid.tr(),message: false),
+                      _tabbar(title: LocaleKeys.mybooking_booked.tr(),message: true),
+                      _tabbar(title: LocaleKeys.mybooking_completed.tr(),message: true),
+                      _tabbar(title: LocaleKeys.mybooking_cancelled.tr(),message: false),
                     ],
                   ),
                 ),
@@ -89,7 +92,7 @@ class _MyBookingPageState extends State<MyBookingPage> with SingleTickerProvider
               alignment: Alignment.center,
               width: 10,
               height: 10,
-              color: Env.value.secondaryColor,
+              color: ThemeColor.secondaryColor(context),
             ),
           ):SizedBox()
         ],

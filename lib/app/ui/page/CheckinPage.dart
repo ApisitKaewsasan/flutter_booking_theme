@@ -3,13 +3,14 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:ds_book_app/app/bloc/Checkin_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/FunctionHelper.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
+import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../model/pojo/Event.dart';
 
 class CheckinPage extends StatefulWidget {
@@ -44,7 +45,7 @@ class _CheckinPageState extends State<CheckinPage> {
       bloc.feedList.listen((event) {
         setState(() {
           _selectedPeriod = DatePeriod(DateTime.parse(event[0].checkin),DateTime.parse(event[0].checkout));
-          bloc.total = "${Age.dateDifference(fromDate: DateTime.parse(event[0].checkin), toDate: DateTime.parse(event[0].checkout), includeToDate: false).days.toString()} nights";
+          bloc.total = "${Age.dateDifference(fromDate: DateTime.parse(event[0].checkin), toDate: DateTime.parse(event[0].checkout), includeToDate: false).days.toString()} ${LocaleKeys.mybooking_night.tr()}";
         });
       });
 
@@ -101,9 +102,9 @@ class _CheckinPageState extends State<CheckinPage> {
 
 
     return Scaffold(
-      appBar: AppToobar(header_type: Header_Type.barnon,Title:"Select a date",onBack: ()=>Navigator.pop(context,false),),
+      backgroundColor: ThemeColor.primaryColor(context),
+      appBar: AppToobar(header_type: Header_Type.barnon,Title:LocaleKeys.selectdate_title.tr(),onBack: ()=>Navigator.pop(context,false),),
       body: Container(
-        color: Colors.white,
         padding: EdgeInsets.all(20),
         child: ListView(
           children: [
@@ -112,14 +113,14 @@ class _CheckinPageState extends State<CheckinPage> {
                 Row(
                   children: [
                     Box_text(
-                        title: "Check-in",
+                        title: LocaleKeys.booking_check_in.tr(),
                         datetime: FunctionHelper.ReportDateTwo(date: _selectedPeriod.start.toString()),
                         icon: Icons.calendar_today),
                     SizedBox(
                       width: 15,
                     ),
                     Box_text(
-                        title: "Check-Out",
+                        title: LocaleKeys.booking_check_out.tr(),
                         datetime: FunctionHelper.ReportDateTwo(date: _selectedPeriod.end.toString()),
                         icon: Icons.arrow_forward)
                   ],
@@ -148,7 +149,7 @@ class _CheckinPageState extends State<CheckinPage> {
                 ),
                 Text(
                   "${bloc.total}",
-                  style: GoogleFonts.kanit(fontSize: 14,fontWeight: FontWeight.w500),
+                  style: GoogleFonts.kanit(fontSize: 14,fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context)),
                 ),
                 SizedBox(
                   height: 15,
@@ -166,7 +167,7 @@ class _CheckinPageState extends State<CheckinPage> {
                         bloc.saveCheckin(_selectedPeriod);
                         Navigator.pop(context,true);
                       },
-                      child: Text("Done",
+                      child: Text(LocaleKeys.selectdate_done.tr(),
                           style: GoogleFonts.kanit(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -199,12 +200,12 @@ class _CheckinPageState extends State<CheckinPage> {
                     style: GoogleFonts.kanit(
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
-                        color: Colors.black)),
+                        color: ThemeColor.fontprimaryColor(context))),
                 Text(datetime,
                     style: GoogleFonts.kanit(
                         fontSize: 14,
                         fontStyle: FontStyle.normal,
-                        color: Color(ColorUtils.hexToInt('#D65653'))))
+                        color: ThemeColor.secondaryColor(context)))
               ],
             )),
       ),
@@ -235,7 +236,7 @@ class _CheckinPageState extends State<CheckinPage> {
   void _onSelectedDateChanged(DatePeriod newPeriod) {
     setState(() {
       _selectedPeriod = newPeriod;
-      bloc.total = "${Age.dateDifference(fromDate: _selectedPeriod.start, toDate: _selectedPeriod.end, includeToDate: false).days.toString()} nights";
+      bloc.total = "${Age.dateDifference(fromDate: _selectedPeriod.start, toDate: _selectedPeriod.end, includeToDate: false).days.toString()} ${LocaleKeys.mybooking_night.tr()}";
     });
   }
 

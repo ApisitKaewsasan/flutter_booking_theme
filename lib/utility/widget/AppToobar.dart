@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ds_book_app/app/bloc/User_Bloc.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
+import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/response/User.dart';
 import 'package:ds_book_app/app/ui/page/ChangePasswordPage.dart';
@@ -60,7 +61,7 @@ enum Header_Type {
     return AppBar(
       centerTitle: false,
       title: Text(Title,
-          style: GoogleFonts.kanit(fontWeight: FontWeight.w500)),
+          style: GoogleFonts.kanit(fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
       leading: Container(
         padding: EdgeInsets.only(left: 10),
         child: SvgPicture.asset("assets/images/logo.svg"),
@@ -76,7 +77,7 @@ enum Header_Type {
   Widget IconAction(BuildContext context){
     return AppBar(
         title: Text(Title,
-            style: GoogleFonts.kanit(color: Colors.black)),
+            style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
         leading: GestureDetector(
             child: Icon(Icons.arrow_back), onTap: () => onBack()),
         actions: [
@@ -88,7 +89,7 @@ enum Header_Type {
   Widget BarNon(BuildContext context){
     return AppBar(
       title: Text(Title,
-          style: GoogleFonts.kanit(color: Colors.black)),
+          style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context))),
       elevation: elevation,
       leading: GestureDetector(
           child: Icon(Icons.arrow_back), onTap: () => onBack()),
@@ -139,12 +140,11 @@ enum Header_Type {
                     "assets/images/icon_profile.svg",
                     width: 5,
                     height: 5,
-                    color: Env.value.primaryColor,
                   )),
               decoration: BoxDecoration(
-                  color: Env.value.secondaryColor,
+                  color: ThemeColor.secondaryColor(context),
                   border: Border.all(
-                    color: Env.value.secondaryColor,
+                    color: ThemeColor.secondaryColor(context),
                     width: 3.0,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(
