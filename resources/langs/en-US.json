@@ -1,0 +1,275 @@
+{
+	"startup": {
+		"When_are_you":"When are you",
+		"planning_visit":"planning to visit",
+		"check_in": "Check-in",
+		"check_out": "Check-out",
+		"guests": "Guests",
+		"room": "Room",
+		"adults": "Adults",
+		"children": "Children",
+		"search": "Search"
+	},
+	"setting": {
+	    "setting_title":"Setting",
+		"language_title": "Language",
+		"language": {
+			"th": "Thailand",
+			"en": "English"
+		}
+	},
+
+	"profile": {
+		"profile_title": "Profile",
+		"edit_profile": "Edit Profile",
+		"my_booking": "My Booking",
+		"saved": "Saved",
+		"notification": "Notification",
+		"my_review": "My Review",
+		"setting": "Settings",
+		"logout": "Log Out",
+		"edit_photo": "Edit Photo",
+		"remove_photo": "Remove Photo",
+		"youdetail": "Your details",
+		"fullname": "Full name",
+		"email":"Email",
+		"phone_no": "Phone no.",
+		"save": "Save",
+		"please_fill_out_all_information": "Please fill out all information",
+		"email_incorrect_format": "email Incorrect format",
+		"invalid_phone_number": "Invalid phone number",
+		"change_password": "Change Password"
+	},
+
+	"mybooking": {
+		"mybooking_title": "My Booking",
+		"unpaid": "Unpaid",
+		"booked": "Booked",
+		"completed": "Completed",
+		"cancelled": "Cancelled",
+		"night": "nights",
+		"room": "rooms",
+		"nightperroom": "night price per room",
+		"total": "Total price",
+		"confirm": "Contirm receipt by",
+		"paynow": "Pay Now",
+		"viewdetail": "View Details",
+		"bookagain": "Book Again",
+		"rateout": "Rate our service now",
+		"cancelledby": "Cancelled by you"
+
+	},
+
+	"mysave" : {
+		"mysave_title": "My Save",
+		"nightperroom": "night price per room",
+		"viewdetail": "View Details"
+	},
+
+	"myreview": {
+		"myreview_title": "My Review",
+		"reviewnow": "Review Now"
+	},
+
+	"changepassword": {
+		"title": "Change Password",
+		"old_input": "Old Password",
+		"new_input": "New Password",
+		"confirm_new": "Confirm New Password",
+		"forget_pass": "Forget Password?",
+		"information_not_available": "Please fill out all information",
+		"passwords_do_not_match": "Passwords do not match"
+	},
+
+	"reset_pass": {
+		"title": "Reset Password",
+		"info": "Enter your email or phone no. to reset\nyour password.",
+		"enailandphone": "Email / Phone no.",
+		"next": "Next",
+		"email_phone_Empty": "email or phone not Empty",
+		"email_incorrect_format": "email Incorrect format"
+	},
+
+	"select_room": {
+		"title": "Select Room",
+		"sort": "Sort by",
+		"filter":"Filter",
+		"nightperroom": "night price per room",
+		"room": "rooms",
+		"guests": "guests",
+		"guests_btn": "Guests",
+		"price_hi_low": "Price (High - Low)",
+		"price_low_hi": "Price (Low - High)",
+		"rating_hi_low": "Rating (High - Low)",
+		"rating_low_hi": "Rating (Low - High)",
+		"room_type": "Room Type",
+		"single": "Single",
+		"double": "Double",
+		"deluxe": "Deluxe",
+		"superdeluxe": "Super Deluxe",
+		"popular_type": "Popular Filter",
+		"swimming": "Swimming Pool",
+		"freewifi": "Free WiFi",
+		"parking": "Parking",
+		"cabletb": "Cable Tv",
+		"floor_type": "Floor",
+		"1_floor": "1st Floor",
+		"2_floor": "2st Floor",
+		"3_floor": "3st Floor",
+		"4_floor": "4st Floor",
+		"star_type": "Star Rating",
+		"1_star": "1 Star",
+		"2_star": "2 Stars",
+		"3_star": "3 Stars",
+		"4_star": "4 Stars",
+		"reset_filtter": "Reset Filter",
+		"seatch": "Search",
+		"for": "for",
+		"room_detail": "Room Detail",
+		"details": "Details",
+		"reviews":"Reviews",
+		"booknow": "Book Now",
+		"air_conditioning": "Air Conditioning",
+		"no_smoking": "No Smoking",
+		"activity": "Activity & Facilities",
+		"fitness": "Fitness Centre",
+		"shampoo": "Shampoo",
+		"mini": "Mini Bar",
+		"soap": "Body Gel / Soap",
+		"mountain": "Mountain View"
+	},
+
+	"booking": {
+		"title": "Booking details",
+		"book_detail": "Your booking details:",
+		"summary": "Summary",
+		"price_due_stay": "Price due to stay:",
+		"taxes": "Taxes & fees :",
+		"including_taxes": "including taxes & fees",
+		"enter_you_detail": "Enter Your details:",
+		"special_request": "Special request",
+		"continue_payment": "Continue to payment",
+		"extra_bed": "Extra bed",
+		"refrigerator": "Refrigerator",
+		"microwave": "Microwave",
+		"any_personal": "Any personal requests? Let us know. ",
+		"payment_method": "Payment Method",
+		"bank_transfer": "Bank Transfer",
+		"check_in": "Check-in",
+		"check_out": "Check-out",
+		"helperText": "Min length: 10, max length: 30",
+		"adults": "Adults",
+		"children": "Children",
+		"Cancel_booking": "Cancel this booking"
+	},
+
+	"payment": {
+		"title": "Payment",
+		"payment_detail": "Payment details",
+		"confirm_payment": "Confirm payment",
+		"account_name": "Account name:",
+		"account_no": "Account no:",
+		"copy": "Copy",
+		"payment_into1": "If you wish to make payment through ATM or over the bank counter, you can select the ATM Bill Payment option which does not require you to upload proof of payment and we can quicken the process of payment confirmation. You can also transfer through internet/mobile banking to Dot Socket account.",
+		"payment_into2": "Please upload picture of Internet Banking confirmation page / ATM receipt by ",
+		"payment_into3": "For faster payment confirmation, we would recommend you to upload a receipt from mobile banking application or internet banking instead of other receipts, otherwise payment confirmation might be delayed",
+		"upload_now": "I have receipt, Upload now.",
+		"upload_later": "I do not have receipt, Upload later",
+		"upload_receipt": "Upload receipt",
+		"click_upload": "Click to upload",
+		"transfer_date": "Transfer date",
+		"transfer_time": "Transfer time",
+		"transfer_from": "Transfer from",
+		"transfer_to": "Transfer to",
+		"amount": "Amount",
+		"amount_tran": "Transfer amount",
+		"bank_acc": "Bank Acc",
+		"digits": "(last 4 digits)",
+		"send": "Send",
+		"cancel": "CANCEL",
+		"ok": "OK",
+		"data_successfully": "Data copied successfully",
+		"cancellation_reason": "Cancellation Reason",
+		"need_to_change_booking_date": "Need to change booking date",
+		"need_to_input_promo_code": "Need to input promo code",
+		"need_add_more_guests": "Need add more guests",
+		"not_want_to_book_anymore": "Don't want to book anymore",
+		"others": "Others"
+	},
+
+	"bank": {
+		"scb" : "Siam Commercial Bank (SCB)",
+		"kbank": "Kasikorn Bank (KBank)",
+		"bbl": "Bangkok Bank (BBL)",
+		"ktb": "Krung Thai Bank (KTB)",
+		"gsb": "Government Savings Bank (GSB)",
+		"bay": "Bank of Ayudhya (BAY)",
+		"tbank": "Thanachart Bank (TBank)",
+		"tmb": "TMB Bank (TMB)",
+		"kin": "Kiatnakin Bank",
+		"uob": "United Overseas Bank (UOB)",
+		"tisco": "TISCO",
+		"ibacnk": "Islamic Bank (iBank)",
+		"cimb": "CIMB"
+	},
+
+	"selectdate": {
+		"title": "Select a date",
+		"done": "Done"
+	},
+
+	"room_optin": {
+		"title": "Select a date",
+		"title": "Room Options",
+		"remove": "Remove",
+		"age_of_child": "Age of child",
+		"add_room": "Add a room"
+	},
+
+	"signinsignup": {
+		"title": "Sign In",
+		"username": "username",
+		"password": "Password",
+		"or_sign_in_with": "or sign in with",
+		"info_signup": "Don't have an account yet?",
+		"info_signin": "Already have an account yet?",
+		"signup": "Sign Up",
+		"username_Empty": "username or password not Empty",
+		"phone_incorrect_format": "phone Incorrect format",
+		"email_incorrect_format": "email Incorrect format",
+		"password_format_is_not_strong": "password format is not strong",
+		"username_or_password_incorrect": "username or password Incorrect",
+		"loadding": "Loadding..."
+	},
+
+	"verification": {
+		"title": "Verification",
+		"info": "Your verification code is sent by SMS to",
+		"verify": "Verify",
+		"info_resend": "Did not receive the code?",
+		"resend": "Resend",
+		"enter_number_verification ": "Enter number verification "
+	},
+
+	"createnew": {
+		"title": "Create an account",
+		"confirm_password": "Confirm password",
+		"create_new_password": "Create new password",
+		"new_password": "New Password",
+		"confirm_new_password": "Confirm new password",
+		"full_name_is_not_available": "Full name is not available",
+		"password_must_not_be_blank": "Password must not be blank",
+		"email_is_blank": "Email is blank"
+
+	},
+
+	"review": {
+		"title": "My Review",
+		"into": "Thankyou for your recommendation.",
+		"rate_our_service": "Rate our service",
+		"info_input": "Tell us what you liked most and what wasn't the best. Your tips can make\na big difference for other visitors",
+		"send_review": "Send Review"
+	}
+
+
+}

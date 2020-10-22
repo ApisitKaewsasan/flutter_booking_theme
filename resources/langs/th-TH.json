@@ -1,0 +1,274 @@
+{
+	"startup": {
+		"When_are_you":"When are you",
+		"planning_visit":"planning to visit",
+		"check_in": "Check-in",
+		"check_out": "Check-out",
+		"guests": "Guests",
+		"room": "Room",
+		"adults": "Adults",
+		"children": "Children",
+		"search": "ค้นหา"
+	},
+	"setting": {
+		"setting_title":"ตั้งค่า",
+		"language_title": "ภาษา",
+		"language": {
+			"th": "ภาษาไทย",
+			"en": "ภาษาอังกฤษ"
+		}
+	},
+
+	"profile": {
+		"profile_title": "ข้อมูลส่วนตัว",
+		"edit_profile": "แก้ไขโปรไฟล์",
+		"my_booking": "การจองของฉัน",
+		"saved": "บันทึกของฉัน",
+		"notification": "การแจ้งเตือน",
+		"my_review": "บทวิจารณ์ของฉัน",
+		"setting": "การตั้งค่า",
+		"logout": "ออกจากระบบ",
+		"edit_photo": "แก้ไขรูปภาพ",
+		"remove_photo": "ลบรูปภาพ",
+		"youdetail": "รายละเอียดของคุณ",
+		"fullname": "ชื่อเต็ม",
+		"email":"อีเมล์",
+		"phone_no": "เบอร์โทร.",
+		"save": "บันทึก",
+		"please_fill_out_all_information": "กรุณากรอกข้อมูลทั้งหมด",
+		"email_incorrect_format": "อีเมลรูปแบบไม่ถูกต้อง",
+		"invalid_phone_number": "หมายเลขโทรศัพท์ไม่ถูกต้อง",
+		"change_password": "เปลี่ยนรหัสผ่าน"
+	},
+
+	"mybooking": {
+		"mybooking_title": "การจองของฉัน",
+		"unpaid": "ยังไม่ได้ชำระ",
+		"booked": "จองแล้ว",
+		"completed": "เสร็จเรียบร้อย",
+		"cancelled": "ยกเลิก",
+		"night": "คืน",
+		"room": "ห้อง",
+		"nightperroom": "ราคาคืนต่อห้อง",
+		"total": "ราคารวม",
+		"confirm": "ยืนยันการรับโดย",
+		"paynow": "จ่ายตอนนี้",
+		"viewdetail": "ดูรายละเอียด",
+		"bookagain": "จองอีกครั้ง",
+		"rateout": "ให้คะแนนบริการของเราตอนนี้",
+		"cancelledby": "รายการนี้ถูกยเลิกแล้ว"
+
+	},
+
+	"mysave" : {
+		"mysave_title": "บันทึกของฉัน",
+		"nightperroom": "ราคาคืนต่อห้อง",
+		"viewdetail": "ดูรายละเอียด"
+	},
+
+	"myreview": {
+		"myreview_title": "บทวิจารณ์ของฉัน",
+		"reviewnow": "ตรวจสอบเลย"
+	},
+
+	"changepassword": {
+		"title": "เปลี่ยนรหัสผ่าน",
+		"old_input": "รหัสผ่านเก่า",
+		"new_input": "รหัสผ่านใหม่",
+		"confirm_new": "ยืนยันรหัสผ่านใหม่",
+		"forget_pass": "ลืมรหัสผ่าน ?",
+		"information_not_available": "กรุณากรอกข้อมูลทั้งหมด",
+		"passwords_do_not_match": "รหัสผ่านไม่ตรงกัน"
+	},
+
+	"reset_pass": {
+		"title": "รีเซ็ตรหัสผ่าน",
+		"info": "ป้อนอีเมลหรือหมายเลขโทรศัพท์ของคุณ เพื่อรีเซ็ตรหัสผ่านของคุณ.",
+		"enailandphone": "อีเมล / เบอร์โทรศัพท์.",
+		"next": "ต่อไป",
+		"email_phone_Empty": "อีเมลหรือโทรศัพท์ไม่ว่างเปล่า",
+		"email_incorrect_format": "อีเมลรูปแบบไม่ถูกต้อง"
+	},
+
+	"select_room": {
+		"title": "เลือกห้อง",
+		"sort": "เรียงตาม",
+		"filter":"กรอง",
+		"nightperroom": "ราคาคืนต่อห้อง",
+		"room": "ห้อง",
+		"guests": "ลูกค้า",
+		"guests_btn": "ลูกค้า",
+		"price_hi_low": "ราคา (สูง - ต่ำ)",
+		"price_low_hi": "ราคา (ต่ำ - สูง)",
+		"rating_hi_low": "คะแนน (สูง - ต่ำ)",
+		"rating_low_hi": "คะแนน (ต่ำ - สูง)",
+		"room_type": "ประเภทห้อง",
+		"single": "โสด",
+		"double": "สองเท่า",
+		"deluxe": "ห้องดีลักซ์",
+		"superdeluxe": "ซูเปอร์ดีลักซ์",
+		"popular_type": "ตัวกรองยอดนิยม",
+		"swimming": "สระว่ายน้ำ",
+		"freewifi": "ฟรีไวไฟ",
+		"parking": "ที่จอดรถ",
+		"cabletb": "เคเบิ้ลทีวีv",
+		"floor_type": "ชั้น",
+		"1_floor": "1 ชั้น",
+		"2_floor": "2 ชั้น",
+		"3_floor": "3 ชั้น",
+		"4_floor": "4 ชั้น",
+		"star_type": "ระดับดาว",
+		"1_star": "1 ดาว",
+		"2_star": "2 ดาว",
+		"3_star": "3 ดาว",
+		"4_star": "4 ดาว",
+		"reset_filtter": "รีเซ็ตตัวกรอง",
+		"seatch": "ค้นหา",
+		"for": "สำหรับ",
+		"room_detail": "รายละเอียดห้อง",
+		"details": "รายละเอียด",
+		"reviews":"บทวิจารณ์",
+		"booknow": "จองตอนนี้",
+		"air_conditioning": "เครื่องปรับอากาศ",
+		"no_smoking": "ห้ามสูบบุหรี่",
+		"activity": "กิจกรรมและสิ่งอำนวยความสะดวก",
+		"fitness": "ศูนย์ออกกำลังกาย",
+		"shampoo": "แชมพู",
+		"mini": "มินิบาร์",
+		"soap": "เจลอาบน้ำ / สบู่",
+		"mountain": "วิวภูเขา"
+
+	},
+
+	"booking": {
+		"title": "รายละเอียดการจอง",
+		"book_detail": "รายละเอียดการจองของคุณ:",
+		"summary": "สรุป",
+		"price_due_stay": "ราคาเนื่องจากการเข้าพัก:",
+		"taxes": "ภาษีและค่าธรรมเนียม :",
+		"including_taxes": "รวมภาษีและค่าธรรมเนียม",
+		"enter_you_detail": "ใส่รายละเอียดของคุณ:",
+		"special_request": "คำขอพิเศษ",
+		"continue_payment": "ดำเนินการต่อเพื่อชำระเงิน",
+		"extra_bed": "เตียงเสริม",
+		"refrigerator": "ตู้เย็น",
+		"microwave": "ไมโครเวฟ",
+		"any_personal": "คำขอส่วนตัวใด ๆ ? แจ้งให้เราทราบ. ",
+		"payment_method": "วิธีการชำระเงิน",
+		"bank_transfer": "โอนเงินผ่านธนาคาร",
+		"check_in": "เช็คอิน",
+		"check_out": "เช็คเอาท์",
+		"helperText": "ความยาวต่ำสุด: 10, ความยาวสูงสุด: 30",
+		"adults": "ผู้ใหญ่",
+		"children": "เด็ก ๆ",
+		"Cancel_booking": "ยกเลิกการจองนี้"
+	},
+
+	"payment": {
+		"title": "การชำระเงิน",
+		"payment_detail": "รายละเอียดการจ่ายเงิน",
+		"confirm_payment": "ยืนยันการชำระเงิน",
+		"account_name": "ชื่อบัญชี:",
+		"account_no": "เลขที่บัญชี:",
+		"copy": "สำเนา",
+		"payment_into1": "หากคุณต้องการชำระเงินผ่านตู้ ATM หรือเคาน์เตอร์ธนาคารคุณสามารถเลือกตัวเลือก ATM Bill Payment ซึ่งไม่ต้องการให้คุณอัปโหลดหลักฐานการชำระเงินและเราสามารถเร่งขั้นตอนการยืนยันการชำระเงินให้เร็วขึ้น คุณยังสามารถโอนผ่านอินเทอร์เน็ต / ธนาคารบนมือถือไปยังบัญชี Dot Socket.",
+		"payment_into2": "กรุณาอัพโหลดรูปหน้ายืนยัน Internet Banking / ใบเสร็จ ATM โดย ",
+		"payment_into3": "เพื่อการยืนยันการชำระเงินที่รวดเร็วขึ้นเราขอแนะนำให้คุณอัปโหลดใบเสร็จจากแอปพลิเคชันธนาคารบนมือถือหรือบริการธนาคารทางอินเทอร์เน็ตแทนใบเสร็จอื่น ๆ มิฉะนั้นการยืนยันการชำระเงินอาจล่าช้า",
+		"upload_now": "ฉันมีใบเสร็จอัปโหลดเลย",
+		"upload_later": "ฉันไม่มีใบเสร็จอัปโหลดในภายหลัง",
+		"upload_receipt": "อัปโหลดใบเสร็จ",
+		"click_upload": "คลิกเพื่ออัปโหลด",
+		"transfer_date": "วันที่โอน",
+		"transfer_time": "เวลาโอน",
+		"transfer_from": "โอนจาก",
+		"transfer_to": "โอนไปที่",
+		"amount": "จำนวน",
+		"amount_tran": "จำนวนเงินโอน",
+		"bank_acc": "บัญชีธนาคาร",
+		"digits": "(4 หลักสุดท้าย)",
+		"send": "ส่ง",
+		"cancel": "ยกเลิก",
+		"ok": "ตกลง",
+		"data_successfully": "คัดลอกข้อมูลเรียบร้อยแล้ว",
+		"cancellation_reason": "เหตุผลในการยกเลิก",
+		"need_to_change_booking_date": "ต้องเปลี่ยนวันจอง",
+		"need_to_input_promo_code": "ต้องใส่รหัสโปรโมชั่น",
+		"need_add_more_guests": "ต้องการแขกเพิ่ม",
+		"not_want_to_book_anymore": "ไม่ต้องการจองอีกต่อไป",
+		"others": "อื่น ๆ"
+	},
+
+	"bank": {
+		"scb" : "ธนาคารไทยพาณิชย์ (SCB)",
+		"kbank": "ธนาคารกสิกรไทย (KBank)",
+		"bbl": "ธนาคารกรุงเทพ (BBL)",
+		"ktb": "ธนาคารกรุงไทย (KTB)",
+		"gsb": "ธนาคารออมสิน (GSB)",
+		"bay": "ธนาคารกรุงศรีอยุธยา (BAY)",
+		"tbank": "ธนาคารธนชาต (TBank)",
+		"tmb": "ธนาคารทหารไทย (TMB)",
+		"kin": "ธนาคารเกียรตินาคินภัทร",
+		"uob": "ธนาคารยูโอบี (UOB)",
+		"tisco": "ธนาคารทิสโก้",
+		"ibacnk": "ธนาคารอิสลาม (iBank)",
+		"cimb": "ธนาคารซีไอเอ็มบี"
+	},
+	"selectdate": {
+		"title": "เลือกวันที่",
+		"done": "เสร็จแล้ว"
+	},
+
+	"room_optin": {
+		"title": "ตัวเลือกห้อง",
+		"remove": "ลบ",
+		"age_of_child": "อายุของเด็ก",
+		"add_room": "เพิ่มห้อง"
+	},
+	"signinsignup": {
+		"title": "เข้าสู่ระบบ",
+		"username": "ชื่อผู้ใช้",
+		"password": "รหัสผ่าน",
+		"or_sign_in_with": "หรือลงชื่อเข้าใช้ด้วย",
+		"info_signup": "อย่ามีบัญชีหรือยัง?",
+		"info_signin": "มีบัญชีอยู่แล้ว?",
+		"signup": "ลงทะเบียน",
+		"username_Empty": "ชื่อผู้ใช้หรือรหัสผ่านไม่ว่างเปล่า",
+		"phone_incorrect_format": "โทรศัพท์ฟอร์มไม่ถูกต้อง",
+		"email_incorrect_format": "อีเมลรูปแบบไม่ถูกต้อง",
+		"password_format_is_not_strong": "รูปแบบรหัสผ่านไม่รัดกุม",
+		"username_or_password_incorrect": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+		"loadding": "กำลังโหลด..."
+	},
+
+	"verification": {
+		"title": "การยืนยัน",
+		"info": "รหัสยืนยันของคุณถูกส่งทาง SMS ไปที่",
+		"verify": "ยืนยัน",
+		"info_resend": "ไม่ได้รับรหัส?",
+		"resend": "ส่งซ้ำ",
+		"enter_number_verification ": "ป้อนการยืนยันหมายเลข "
+	},
+
+	"createnew": {
+		"title": "สร้างบัญชี",
+		"confirm_password": "ยืนยันรหัสผ่าน",
+		"create_new_password": "สร้างรหัสผ่านใหม่",
+		"new_password": "รหัสผ่านใหม่",
+		"confirm_new_password": "ยืนยันรหัสผ่านใหม่",
+		"full_name_is_not_available": "ชื่อเต็มห้ามว่าง",
+		"password_must_not_be_blank": "รหัสผ่านห้ามว่าง",
+		"email_is_blank": "อีเมล์ห้ามว่าง"
+
+	},
+
+	"review": {
+		"title": "บทวิจารณ์ของฉัน",
+		"into": "ขอบคุณสำหรับคำแนะนำของคุณ.",
+		"rate_our_service": "ให้คะแนนบริการของเรา",
+		"info_input": "บอกเราว่าคุณชอบอะไรมากที่สุดและอะไรไม่ดีที่สุด เคล็ดลับของคุณสามารถทำได้\nความแตกต่างที่ยิ่งใหญ่สำหรับผู้เยี่ยมชมคนอื่น ๆ",
+		"send_review": "ส่งรีวิว"
+	}
+
+
+
+}
