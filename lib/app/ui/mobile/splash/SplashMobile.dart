@@ -8,15 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashMobile extends StatefulWidget {
 
   static const String PATH = '/';
 
   @override
-  _SplashPageState createState() => _SplashPageState();
+  _SplashMobileState createState() => _SplashMobileState();
 }
 
-class _SplashPageState extends State<SplashPage>
+class _SplashMobileState extends State<SplashMobile>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> animation;
@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage>
     animationController = new AnimationController(
         vsync: this, duration: new Duration(seconds: 2));
     animation =
-        new CurvedAnimation(parent: animationController, curve: Curves.easeOut);
+    new CurvedAnimation(parent: animationController, curve: Curves.easeOut);
 
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
@@ -83,6 +83,6 @@ class _SplashPageState extends State<SplashPage>
   }
 
   navigatorPage() {
-     Navigator.pushAndRemoveUntil(context, PageTransition(type: PageTransitionType.fade, child:  StartUpPage()), (Route<dynamic> route) => false);
+    Navigator.pushAndRemoveUntil(context, PageTransition(type: PageTransitionType.fade, child:  StartUpPage()), (Route<dynamic> route) => false);
   }
 }

@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
@@ -26,23 +27,19 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../../model/pojo/Event.dart';
 
-
 class BookingPage extends StatefulWidget {
   static const String PATH = '/booking';
-
 
   final titiletag;
   final imagetag;
 
-  const BookingPage({Key key, this.titiletag,this.imagetag}) : super(key: key);
-
+  const BookingPage({Key key, this.titiletag, this.imagetag}) : super(key: key);
 
   @override
   _BookingPageState createState() => _BookingPageState();
 }
 
 class _BookingPageState extends State<BookingPage> {
-
   int Extrabed = 0;
   int Refrigerator = 0;
   int Microwave = 0;
@@ -65,13 +62,12 @@ class _BookingPageState extends State<BookingPage> {
     _navigateToPaymentPage(context);
   }
 
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
     return Scaffold(
-      backgroundColor: ThemeColor.primaryColor(context),
+        backgroundColor: ThemeColor.primaryColor(context),
         appBar: AppToobar(
           header_type: Header_Type.barnon,
           Title: LocaleKeys.booking_title.tr(),
@@ -92,22 +88,28 @@ class _BookingPageState extends State<BookingPage> {
                               style: GoogleFonts.kanit(
                                   fontSize: 20,
                                   color: ThemeColor.secondaryColor(context)))),
-                      Hero(tag: widget.imagetag,child: SliderImage(height: 180)),
+                      FullScreenWidget(
+                          child: Hero( tag: widget.imagetag,child: SliderImage(height: 200))),
                       Container(
                         child: Form(
                           key: _form,
                           child: Column(
                             children: [
                               TabtitleBody(),
-                              Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                              Divider(
+                                  color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                               _contentCheck(),
-                              Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                              Divider(
+                                  color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                               _contentRoom(),
-                              Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                              Divider(
+                                  color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                               _contentSummary(),
-                              Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                              Divider(
+                                  color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                               _totalPrice(),
-                              Divider(color: Color(ColorUtils.hexToInt("#C5C5C5"))),
+                              Divider(
+                                  color: Color(ColorUtils.hexToInt("#C5C5C5"))),
                               _FromDetail(),
                               _FromSpecial()
                             ],
@@ -133,10 +135,12 @@ class _BookingPageState extends State<BookingPage> {
           Row(
             children: [
               Hero(
-          tag: widget.titiletag,
+                tag: widget.titiletag,
                 child: Text("Deluxe Room",
                     style: GoogleFonts.kanit(
-                        fontSize: 18, fontWeight: FontWeight.w500,color: ThemeColor.fontprimaryColor(context))),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: ThemeColor.fontprimaryColor(context))),
               )
             ],
           ),
@@ -146,7 +150,9 @@ class _BookingPageState extends State<BookingPage> {
                   flex: 3,
                   child: Text("2nd floor with mountain view",
                       style: GoogleFonts.kanit(
-                          fontSize: 13, fontWeight: FontWeight.w300,color: ThemeColor.fontprimaryColor(context)))),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w300,
+                          color: ThemeColor.fontprimaryColor(context)))),
               Expanded(
                 flex: 2,
                 child: Row(
@@ -247,10 +253,12 @@ class _BookingPageState extends State<BookingPage> {
           Row(
             children: [
               Expanded(
-                  child: Text("3 ${LocaleKeys.mybooking_night.tr()}, 2 ${LocaleKeys.select_room_room.tr()} ",
+                  child: Text(
+                      "3 ${LocaleKeys.mybooking_night.tr()}, 2 ${LocaleKeys.select_room_room.tr()} ",
                       style: GoogleFonts.kanit(fontWeight: FontWeight.w500))),
               Expanded(
-                  child: Text("2 ${LocaleKeys.booking_adults.tr()} 2 ${LocaleKeys.booking_children.tr()}",
+                  child: Text(
+                      "2 ${LocaleKeys.booking_adults.tr()} 2 ${LocaleKeys.booking_children.tr()}",
                       style: GoogleFonts.kanit(fontWeight: FontWeight.w500)))
             ],
           )
@@ -272,18 +280,19 @@ class _BookingPageState extends State<BookingPage> {
                       color: ThemeColor.fontprimaryColor(context)))),
           Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text("฿3,543.00",
-                      style: GoogleFonts.kanit(
-                          fontWeight: FontWeight.bold, color: ThemeColor.fontprimaryColor(context))),
-                  Text(LocaleKeys.booking_including_taxes.tr(),
-                      style: GoogleFonts.kanit(
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                          color: ThemeColor.fontprimaryColor(context)))
-                ],
-              ))
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text("฿3,543.00",
+                  style: GoogleFonts.kanit(
+                      fontWeight: FontWeight.bold,
+                      color: ThemeColor.fontprimaryColor(context))),
+              Text(LocaleKeys.booking_including_taxes.tr(),
+                  style: GoogleFonts.kanit(
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                      color: ThemeColor.fontprimaryColor(context)))
+            ],
+          ))
         ],
       ),
     );
@@ -328,12 +337,12 @@ class _BookingPageState extends State<BookingPage> {
                           color: ThemeColor.fontFadedColor(context)))),
               Expanded(
                   child: Container(
-                    alignment: Alignment.topRight,
-                    child: Text("฿543.00",
-                        style: GoogleFonts.kanit(
-                            fontWeight: FontWeight.w500,
-                            color: ThemeColor.fontFadedColor(context))),
-                  ))
+                alignment: Alignment.topRight,
+                child: Text("฿543.00",
+                    style: GoogleFonts.kanit(
+                        fontWeight: FontWeight.w500,
+                        color: ThemeColor.fontFadedColor(context))),
+              ))
             ],
           ),
         ],
@@ -372,7 +381,7 @@ class _BookingPageState extends State<BookingPage> {
     );
   }
 
-  Widget _FromSpecial(){
+  Widget _FromSpecial() {
     return Container(
       padding: EdgeInsets.only(right: 20, top: 5, left: 20, bottom: 20),
       child: Column(
@@ -382,99 +391,127 @@ class _BookingPageState extends State<BookingPage> {
               margin: EdgeInsets.only(bottom: 15),
               child: Row(
                 children: [
-                  Text(LocaleKeys.booking_special_request.tr(),style: GoogleFonts.kanit(fontWeight: FontWeight.w500,color: ThemeColor.secondaryColor(context))),
+                  Text(LocaleKeys.booking_special_request.tr(),
+                      style: GoogleFonts.kanit(
+                          fontWeight: FontWeight.w500,
+                          color: ThemeColor.secondaryColor(context))),
                   SizedBox(width: 5),
-                  Icon(Special_request?Ionicons.ios_arrow_up:Ionicons.ios_arrow_down,color: ThemeColor.secondaryColor(context),size: 20,)
+                  Icon(
+                    Special_request
+                        ? Ionicons.ios_arrow_up
+                        : Ionicons.ios_arrow_down,
+                    color: ThemeColor.secondaryColor(context),
+                    size: 20,
+                  )
                 ],
               ),
             ),
-            onTap: (){
+            onTap: () {
               setState(() {
-                if(Special_request){
+                if (Special_request) {
                   Special_request = false;
-                }else{
+                } else {
                   Special_request = true;
                   _listviewController.animateTo(
-                    _listviewController.position.maxScrollExtent+250,
+                    _listviewController.position.maxScrollExtent + 250,
                     duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeOut,);
+                    curve: Curves.easeOut,
+                  );
                 }
-
               });
             },
           ),
-          Special_request?Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(child: Check_Box(title: LocaleKeys.booking_extra_bed.tr(),value: Extrabed,onCheckBox:(int value){
-                    setState(() {
-                      Extrabed = Extrabed==0?1:0;
-                    });
-                  }),),
-                  Expanded(child: Check_Box(title: LocaleKeys.booking_refrigerator.tr(),value: Refrigerator,onCheckBox:(int value){
-                    setState(() {
-                      Refrigerator = Refrigerator==0?1:0;
-                    });
-                  }),)
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(child: Check_Box(title: LocaleKeys.booking_microwave.tr(),value: Microwave,onCheckBox:(int value){
-                    setState(() {
-                      Microwave = Microwave==0?1:0;
-                    });
-                  }),)
-                ],
-              ),
-              SizedBox(height: 15),
-              Row(
-                children: [
-                  Text(LocaleKeys.booking_any_personal.tr(),style: GoogleFonts.kanit())
-                ],
-              ),
-              SizedBox(height: 10),
-              Container(
-                child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    validator: ValidationBuilder().build(),
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
-                      helperText: 'Min length: 10, max length: 30',
-                      helperStyle: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Color(ColorUtils.hexToInt("#858585")),
+          Special_request
+              ? Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Check_Box(
+                              title: LocaleKeys.booking_extra_bed.tr(),
+                              value: Extrabed,
+                              onCheckBox: (int value) {
+                                setState(() {
+                                  Extrabed = Extrabed == 0 ? 1 : 0;
+                                });
+                              }),
                         ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Color(ColorUtils.hexToInt("#858585")),
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Color(ColorUtils.hexToInt("#858585")),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Color(ColorUtils.hexToInt("#858585")),
-                          width: 1,
-                        ),
-                      ),
+                        Expanded(
+                          child: Check_Box(
+                              title: LocaleKeys.booking_refrigerator.tr(),
+                              value: Refrigerator,
+                              onCheckBox: (int value) {
+                                setState(() {
+                                  Refrigerator = Refrigerator == 0 ? 1 : 0;
+                                });
+                              }),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Check_Box(
+                              title: LocaleKeys.booking_microwave.tr(),
+                              value: Microwave,
+                              onCheckBox: (int value) {
+                                setState(() {
+                                  Microwave = Microwave == 0 ? 1 : 0;
+                                });
+                              }),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Text(LocaleKeys.booking_any_personal.tr(),
+                            style: GoogleFonts.kanit())
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          validator: ValidationBuilder().build(),
+                          maxLines: 5,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
+                            helperText: 'Min length: 10, max length: 30',
+                            helperStyle: GoogleFonts.kanit(
+                                color: ThemeColor.fontprimaryColor(context)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: Color(ColorUtils.hexToInt("#858585")),
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: Color(ColorUtils.hexToInt("#858585")),
+                              ),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: Color(ColorUtils.hexToInt("#858585")),
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: BorderSide(
+                                color: Color(ColorUtils.hexToInt("#858585")),
+                                width: 1,
+                              ),
+                            ),
+                          )),
                     )
-                ),
-              )
-            ],
-          ):SizedBox()
+                  ],
+                )
+              : SizedBox()
         ],
       ),
     );
@@ -489,20 +526,31 @@ class _BookingPageState extends State<BookingPage> {
               width: MediaQuery.of(context).size.width,
               child: Text(LocaleKeys.booking_enter_you_detail.tr(),
                   style: GoogleFonts.kanit(
-                      fontSize: 20, color: ThemeColor.secondaryColor(context)))),
+                      fontSize: 20,
+                      color: ThemeColor.secondaryColor(context)))),
           SizedBox(height: 10),
-          Container(width: MediaQuery.of(context).size.width,child: Text(LocaleKeys.profile_fullname.tr(),style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context),fontWeight: FontWeight.w500))),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Text(LocaleKeys.profile_fullname.tr(),
+                  style: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context),
+                      fontWeight: FontWeight.w500))),
           SizedBox(height: 10),
           Container(
             height: 65,
             child: TextFormField(
                 cursorColor: ThemeColor.secondaryColor(context),
                 keyboardType: TextInputType.text,
-                validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
+                validator: ValidationBuilder()
+                    .required()
+                    .minLength(10)
+                    .maxLength(30)
+                    .build(),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
                   helperText: LocaleKeys.booking_helperText.tr(),
-                  helperStyle: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)),
+                  helperStyle: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
@@ -528,22 +576,31 @@ class _BookingPageState extends State<BookingPage> {
                       width: 1,
                     ),
                   ),
-                )
-            ),
+                )),
           ),
           SizedBox(height: 10),
-          Container(width: MediaQuery.of(context).size.width,child: Text(LocaleKeys.profile_email.tr(),style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context),fontWeight: FontWeight.w500))),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Text(LocaleKeys.profile_email.tr(),
+                  style: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context),
+                      fontWeight: FontWeight.w500))),
           SizedBox(height: 10),
           Container(
             height: 65,
             child: TextFormField(
                 cursorColor: ThemeColor.secondaryColor(context),
                 keyboardType: TextInputType.emailAddress,
-                validator: ValidationBuilder().email().minLength(10).maxLength(30).build(),
+                validator: ValidationBuilder()
+                    .email()
+                    .minLength(10)
+                    .maxLength(30)
+                    .build(),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
                   helperText: LocaleKeys.booking_helperText.tr(),
-                  helperStyle: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)),
+                  helperStyle: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
@@ -569,22 +626,31 @@ class _BookingPageState extends State<BookingPage> {
                       width: 1.0,
                     ),
                   ),
-                )
-            ),
+                )),
           ),
           SizedBox(height: 10),
-          Container(width: MediaQuery.of(context).size.width,child: Text(LocaleKeys.profile_phone_no.tr(),style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context),fontWeight: FontWeight.w500))),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Text(LocaleKeys.profile_phone_no.tr(),
+                  style: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context),
+                      fontWeight: FontWeight.w500))),
           SizedBox(height: 10),
           Container(
             height: 65,
             child: TextFormField(
                 cursorColor: ThemeColor.secondaryColor(context),
                 keyboardType: TextInputType.phone,
-                validator: ValidationBuilder().required().minLength(10).maxLength(30).build(),
+                validator: ValidationBuilder()
+                    .required()
+                    .minLength(10)
+                    .maxLength(30)
+                    .build(),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(10, 10.0, 20.0, 10.0),
                   helperText: LocaleKeys.booking_helperText.tr(),
-                  helperStyle: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)),
+                  helperStyle: GoogleFonts.kanit(
+                      color: ThemeColor.fontprimaryColor(context)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
@@ -610,8 +676,7 @@ class _BookingPageState extends State<BookingPage> {
                       width: 1.0,
                     ),
                   ),
-                )
-            ),
+                )),
           ),
         ],
       ),
@@ -619,7 +684,15 @@ class _BookingPageState extends State<BookingPage> {
   }
 
   _navigateToPaymentPage(BuildContext context) async {
-    Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: PaymentPage(id: "0",titiletag: widget.titiletag,imagetag: widget.imagetag,)));
-
+    Navigator.push(
+        context,
+        PageTransition(
+            duration: Duration(milliseconds: 300),
+            type: PageTransitionType.fade,
+            child: PaymentPage(
+              id: "0",
+              titiletag: widget.titiletag,
+              imagetag: widget.imagetag,
+            )));
   }
 }

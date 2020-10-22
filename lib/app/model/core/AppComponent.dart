@@ -10,6 +10,7 @@ import 'package:ds_book_app/app/ui/page/StartUpPage.dart';
 import 'package:ds_book_app/config/Env.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -51,6 +52,11 @@ class AppComponentState extends State<AppComponent> {
 
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 //flutter pub run gen_lang:generate
     final app = new MaterialApp(
       localizationsDelegates: context.localizationDelegates,
