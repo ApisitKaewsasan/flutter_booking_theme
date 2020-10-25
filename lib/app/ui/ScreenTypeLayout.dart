@@ -17,14 +17,14 @@ class ScreenTypeLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       // If sizing indicates Tablet and we have a tablet widget then return
-      if (sizingInformation.deviceScreenType == DeviceScreenType.Tablet) {
+      if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
         if (tablet != null) {
           return tablet;
         }
       }
 
       // If sizing indicates desktop and we have a desktop widget then return
-      if (sizingInformation.deviceScreenType == DeviceScreenType.Desktop) {
+      if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
         if (desktop != null) {
           return desktop;
         }

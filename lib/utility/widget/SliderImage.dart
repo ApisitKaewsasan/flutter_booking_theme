@@ -43,9 +43,8 @@ class _SliderImageState extends State<SliderImage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-          alignment: Alignment.center,
-        child: SingleChildScrollView(
+    return Center(
+      child: Container(
           child: Stack(
             children: <Widget>[
               CarouselSlider.builder(
@@ -55,9 +54,10 @@ class _SliderImageState extends State<SliderImage> {
                       child: _cardSilder(url: imgList[itemIndex]),
                     ),
                 options: CarouselOptions(
+                  height: widget.height,
                   enlargeCenterPage: false,
                   viewportFraction: 1.0,
-                  autoPlayCurve: Curves.linearToEaseOut,
+                  autoPlayCurve: Curves.decelerate,
                   onPageChanged: (index, reason) {
                     setState(() {
                       page = "${index + 1}/${imgList.length}";
@@ -67,7 +67,7 @@ class _SliderImageState extends State<SliderImage> {
                 carouselController: _controller,
               ),
               Container(
-                height: widget.height+10,
+                height: widget.height,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -113,46 +113,44 @@ class _SliderImageState extends State<SliderImage> {
               )
             ],
           ),
-        ),
+      ),
     );
   }
 
   Widget _cardSilder({String url}){
     return Container(
-      child: Container(
-        child: ClipRRect(
-            child: Stack(
-              children: <Widget>[
-                CachedNetworkImage(
-                  width: MediaQuery.of(context).size.width,
-                  placeholder: (context, url) => Lottie.asset(Env.value.loadingAnimaion,height: widget.height),
-                  fit: BoxFit.cover,
-                  imageUrl: url,
-                  errorWidget: (context, url, error) => Container(height: widget.height,child: Icon(Icons.error,size: 40,)),
-                ),
-                Positioned(
-                  top: 100,
-                  bottom: 0.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromARGB(140, 0, 0, 0),
-                          Color.fromARGB(0, 0, 0, 0)
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
+      child: ClipRRect(
+          child: Stack(
+            children: <Widget>[
+              CachedNetworkImage(
+                width: MediaQuery.of(context).size.width,
+                placeholder: (context, url) => Lottie.asset(Env.value.loadingAnimaion,height: widget.height),
+                fit: BoxFit.cover,
+                imageUrl: url,
+                errorWidget: (context, url, error) => Container(height: widget.height,child: Icon(Icons.error,size: 40,)),
+              ),
+              Positioned(
+                top: 100,
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(140, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                     ),
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 20.0),
                   ),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 20.0),
                 ),
-              ],
-            )),
-      ),
+              ),
+            ],
+          )),
     );
   }
 

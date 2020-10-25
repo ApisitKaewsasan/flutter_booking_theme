@@ -57,7 +57,7 @@ class _CustomCancelDialogBoxState extends State<CustomCancelDialogBox>
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
       child: Container(
-        color: Color(ColorUtils.hexToInt("#F1F1F1")),
+        color: ThemeColor.DialogprimaryColor(context),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -69,7 +69,7 @@ class _CustomCancelDialogBoxState extends State<CustomCancelDialogBox>
                   Text(LocaleKeys.payment_cancellation_reason.tr(),
                       style: GoogleFonts.kanit(
                           fontSize: 20,
-                          color: Colors.black,
+                          color: ThemeColor.fontprimaryColor(context),
                           fontWeight: FontWeight.w500)),
                 ],
               ),
@@ -113,12 +113,12 @@ class _CustomCancelDialogBoxState extends State<CustomCancelDialogBox>
                       : "assets/images/checkbox_off.svg",
                   width: 15,
                   height: 15,
-                  color: Colors.black),
+                  color: ThemeColor.fontprimaryColor(context)),
               SizedBox(
                 width: 15,
               ),
               Text(message,
-                  style: GoogleFonts.kanit(fontWeight: FontWeight.normal))
+                  style: GoogleFonts.kanit(color: ThemeColor.fontprimaryColor(context)))
             ],
           )),
       onTap: () {

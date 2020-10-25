@@ -61,12 +61,12 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
       child: Container(
-        color: ThemeColor.primaryColor(context),
+        color: ThemeColor.DialogprimaryColor(context),
         child: Column(
             mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-
+              color: Colors.grey.withOpacity(0.2),
               padding: EdgeInsets.only(left: 20,bottom: 15,top: 15),
               child: Row(
                 children: <Widget>[
@@ -84,7 +84,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
             Container(
               padding: EdgeInsets.only(left: 20,bottom: 15,top: 15),
               decoration: BoxDecoration(
-                  color: ThemeColor.primaryColor(context),
                   border: Border(bottom: BorderSide(color: Color(ColorUtils.hexToInt("#F1F1F1")), width: 2))
               ),
 
@@ -109,7 +108,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
             Container(
               padding: EdgeInsets.only(left: 20,bottom: 15,top: 15),
               decoration: BoxDecoration(
-                  color: ThemeColor.primaryColor(context),
                   border: Border(bottom: BorderSide(color: Color(ColorUtils.hexToInt("#F1F1F1")), width: 2))
               ),
 
@@ -134,7 +132,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
             Container(
               padding: EdgeInsets.only(left: 20,bottom: 15,top: 15),
               decoration: BoxDecoration(
-                  color: ThemeColor.primaryColor(context),
                   border: Border(bottom: BorderSide(color: Color(ColorUtils.hexToInt("#F1F1F1")), width: 2))
               ),
               child: GestureDetector(
@@ -158,7 +155,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
             Container(
               padding: EdgeInsets.only(left: 20,bottom: 20,top: 15),
               decoration: BoxDecoration(
-                  color: ThemeColor.primaryColor(context),
                   border: Border(bottom: BorderSide(color: Color(ColorUtils.hexToInt("#F1F1F1")), width: 2))
               ),
               child: GestureDetector(
@@ -179,6 +175,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox>  with SingleTickerPro
                 },
               ),
             ),
+            SizedBox(height: 50)
 
           ],
         ),

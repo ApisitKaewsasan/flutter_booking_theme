@@ -17,7 +17,7 @@ class ThemeColor{
 
   static Color primaryColor(BuildContext context){
 
-    return MediaQuery.of(context).platformBrightness==Brightness.dark?Colors.black.withOpacity(0.8):Colors.white;
+    return MediaQuery.of(context).platformBrightness==Brightness.dark?Colors.black.withOpacity(1):Colors.white;
   }
 
   static Color fontprimaryColor(BuildContext context){
@@ -60,10 +60,14 @@ class ThemeColor{
   }
 
   static SnackBarThemeData SnackBarThemeColor(BuildContext context){
-    return SnackBarThemeData(contentTextStyle: GoogleFonts.kanit());
+    return SnackBarThemeData(contentTextStyle: GoogleFonts.kanit(color: Colors.amber));
   }
 
 
+  static Color DialogprimaryColor(BuildContext context){
+
+    return MediaQuery.of(context).platformBrightness==Brightness.dark?Colors.black.withOpacity(0.4):Colors.white;
+  }
 
 
 

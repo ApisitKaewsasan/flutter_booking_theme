@@ -1,18 +1,12 @@
 
-
-import 'package:basic_utils/basic_utils.dart';
 import 'package:ds_book_app/app/model/core/AppBookingApplication.dart';
 import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/ThemeColor.dart';
-import 'package:ds_book_app/app/model/core/Usermanager.dart';
-import 'package:ds_book_app/app/ui/page/SplashPage.dart';
-import 'package:ds_book_app/app/ui/page/StartUpPage.dart';
+import 'package:ds_book_app/app/ui/splash/SplashView.dart';
 import 'package:ds_book_app/config/Env.dart';
 import 'package:ds_book_app/utility/log/Log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 final RouteObserver<PageRoute> routeObserver = new RouteObserver<PageRoute>();
@@ -69,7 +63,7 @@ class AppComponentState extends State<AppComponent> {
       darkTheme: ThemeData(
           primarySwatch: ThemeColor.primarySwatch(context),snackBarTheme: ThemeColor.SnackBarThemeColor(context), brightness: Brightness.dark
       ),
-      home: SplashPage(),
+      home: SplashView(),
       navigatorObservers: [routeObserver],
     );
 

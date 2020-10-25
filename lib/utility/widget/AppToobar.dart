@@ -4,14 +4,8 @@ import 'package:ds_book_app/app/model/core/AppProvider.dart';
 import 'package:ds_book_app/app/model/core/ThemeColor.dart';
 import 'package:ds_book_app/app/model/core/Usermanager.dart';
 import 'package:ds_book_app/app/model/pojo/response/User.dart';
-import 'package:ds_book_app/app/ui/page/ChangePasswordPage.dart';
-import 'package:ds_book_app/app/ui/page/CreateAccountPage.dart';
-import 'package:ds_book_app/app/ui/page/CreateNewPassword.dart';
-import 'package:ds_book_app/app/ui/page/ForgetPasswordPage.dart';
-import 'package:ds_book_app/app/ui/page/ProfilePage.dart';
-import 'package:ds_book_app/app/ui/page/SignInPage.dart';
-import 'package:ds_book_app/app/ui/page/SignUpPage.dart';
-import 'package:ds_book_app/app/ui/page/VerificationPage.dart';
+import 'package:ds_book_app/app/ui/profile/ProfileView.dart';
+import 'package:ds_book_app/app/ui/signIn/SignInView.dart';
 import 'package:ds_book_app/config/Env.dart';
 
 import 'package:flutter/material.dart';
@@ -98,10 +92,10 @@ enum Header_Type {
 
    _navigateToProfilePage(BuildContext context) async {
      if(await Usermanager().isLogin()){
-       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: ProfilePage()));
+       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: ProfileView()));
 
      }else{
-       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SignInPage()));
+       Navigator.push(context, PageTransition(duration: Duration(milliseconds: 300),type: PageTransitionType.fade, child: SignInView()));
 
      }
    }
