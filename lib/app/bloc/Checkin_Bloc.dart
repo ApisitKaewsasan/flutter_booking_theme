@@ -34,6 +34,7 @@ class Check_Bloc{
     if (count == 0) {
       _application.dbAppStoreRepository.Insert_Date_Check(Checkin(id: 1,checkin: "${install_date_now}",checkout: "${install_date_now}"));
     }
+    loadFeedList();
 
   }
   CompositeSubscription _compositeSubscription = CompositeSubscription();

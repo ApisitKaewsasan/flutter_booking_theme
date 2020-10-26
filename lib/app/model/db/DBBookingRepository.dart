@@ -64,6 +64,12 @@ class DBBookingRepository{
     return await _database.insert("Checkin_From", checkin.toMap());
   }
 
+
+  Future<void> DeleteAllCheck() async {
+    String sql = "DELETE   FROM Checkin_From";
+    return await _database.rawUpdate(sql);
+  }
+
   Future<int> CountChecks() async {
     int count = Sqflite.firstIntValue(await _database.rawQuery('SELECT COUNT(*) FROM Checkin_From'));
     return count;
@@ -78,7 +84,9 @@ class DBBookingRepository{
   }
 
   Future<void> Update_Date_Check(Checkin checkin) async{
-    return await _database.update("Checkin_From", checkin.toMap());
+
+      return await _database.update("Checkin_From", checkin.toMap());
+
   }
 
 

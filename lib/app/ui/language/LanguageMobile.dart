@@ -72,7 +72,9 @@ class _LanguageMobileState extends State<LanguageMobile> with RouteAware{
         ),
       ),
       onTap: () async {
-        EasyLocalization.of(context).locale = locale;
+       setState(() {
+         EasyLocalization.of(context).locale = locale;
+       });
       },
     );
   }

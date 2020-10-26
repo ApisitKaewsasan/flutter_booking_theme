@@ -72,7 +72,9 @@ class _LanguageTabletState extends State<LanguageTablet> with RouteAware{
         ),
       ),
       onTap: () async {
-        EasyLocalization.of(context).locale = locale;
+        setState(() {
+          EasyLocalization.of(context).locale = locale;
+        });
       },
     );
   }

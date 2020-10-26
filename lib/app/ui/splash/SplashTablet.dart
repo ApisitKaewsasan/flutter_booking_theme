@@ -42,35 +42,37 @@ class _SplashTabletState extends State<SplashTablet>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColor.primaryColor(context),
-      body: Container(
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            new Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: [
-                        Text("Dot Socket",style: GoogleFonts.kanit(fontSize: 16,fontWeight: FontWeight.w500),),
-                        Text("Version 0.0.1",style: GoogleFonts.kanit(fontSize: 15,fontWeight: FontWeight.w500),)
-                      ],
-                    ))
-              ],
-            ),
-            new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SvgPicture.asset(
-                  "assets/images/logo.svg",
-                  width: animation.value * 180,
-                  height: animation.value * 180,
-                ),
-              ],
-            ),
-          ],
+      body:SafeArea(
+        child: Container(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              new Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Column(
+                        children: [
+                          Text("Dot Socket",style: GoogleFonts.kanit(fontSize: 16,fontWeight: FontWeight.w500),),
+                          Text("Version 0.0.1",style: GoogleFonts.kanit(fontSize: 15,fontWeight: FontWeight.w500),)
+                        ],
+                      ))
+                ],
+              ),
+              new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SvgPicture.asset(
+                    "assets/images/logo.svg",
+                    width: animation.value * 180,
+                    height: animation.value * 180,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
