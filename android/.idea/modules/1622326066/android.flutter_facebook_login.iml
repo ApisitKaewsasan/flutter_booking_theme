@@ -32,11 +32,9 @@
     <exclude-output />
     <content url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0">
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/android/src/main/java" isTestSource="false" />
-      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/android/.gradle" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/build" />
-      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/example/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/example/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/example/build" />
     </content>
