@@ -33,9 +33,11 @@
     <content url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22">
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/android/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/android/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/android/.gradle" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/build" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/example/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/example/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22/example/build" />
     </content>

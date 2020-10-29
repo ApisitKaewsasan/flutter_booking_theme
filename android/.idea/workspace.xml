@@ -5,42 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28b88bc-1781-4aea-abb5-462a9c08f159" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_28_1_android.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_compat_qual_2_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_18.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/-1230768071/android.shared_preferences.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/-1323239060/android.path_provider.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/593450644/android.sqflite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_27_0_1_android.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_compat_qual_2_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/-1092106581/android.google_sign_in.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-1092106581/android.google_sign_in.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/-1230768071/io.flutter.plugins.sharedpreferences.android.shared_preferences.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/-1904565293/android.sqflite.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/-1230768071/android.shared_preferences.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-1230768071/android.shared_preferences.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/-1323239060/android.path_provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-1323239060/android.path_provider.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/-2007255486/android.flutter_plugin_android_lifecycle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-2007255486/android.flutter_plugin_android_lifecycle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/-823296660/android.file_picker.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/1622326066/android.flutter_facebook_login.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/1622326066/android.flutter_facebook_login.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/1783324224/android.sign_in_with_apple.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/1783324224/android.sign_in_with_apple.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/484215403/io.flutter.plugins.pathprovider.android.path_provider.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/593450644/android.sqflite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/593450644/android.sqflite.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/697241201/android.image_picker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/697241201/android.image_picker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds_book_app_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ds_book_app_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ds_book_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ds_book_app.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +44,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />

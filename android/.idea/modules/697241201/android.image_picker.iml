@@ -33,9 +33,11 @@
     <content url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12">
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/android/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/android/src/main/res" type="java-resource" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/android/.gradle" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/build" />
+      <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/example/.dart_tool" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/example/.pub" />
       <excludeFolder url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+12/example/build" />
     </content>
