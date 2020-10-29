@@ -16,13 +16,13 @@ import 'package:ds_book_app/config/Env.dart';
 import 'package:ds_book_app/generated/locale_keys.g.dart';
 import 'package:ds_book_app/utility/widget/AppToobar.dart';
 import 'package:ds_book_app/utility/widget/Check_Box.dart';
+import 'package:ds_book_app/utility/widget/CustomDialogDate.dart';
 import 'package:ds_book_app/utility/widget/CustomDialogTime.dart';
 import 'package:ds_book_app/utility/widget/SliderImage.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -621,15 +621,25 @@ class _ConfirmPaymentMobileState extends State<ConfirmPaymentMobile> {
   Future<void> _showDialogDate() async {
     var date = DateTime.now();
 
-    showMaterialDatePicker(
-      context: context,
-      selectedDate: date,
-      onChanged: (value) {
-        setState(() {
-          _pickDate.text = DateFormat("dd/MM/yyyy").format(DateTime.parse(value.toString()));
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CustomDialogDate(onSelect:(String val){
+            setState(() {
+              _pickDate.text = val;
+            });
+          });
         });
-      },
-    );
+
+    // showMaterialDatePicker(
+    //   context: context,
+    //   selectedDate: date,
+    //   onChanged: (value) {
+    //     setState(() {
+    //       _pickDate.text = DateFormat("dd/MM/yyyy").format(DateTime.parse(value.toString()));
+    //     });
+    //   },
+    // );
   }
 
 

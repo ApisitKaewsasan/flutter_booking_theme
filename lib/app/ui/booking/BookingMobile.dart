@@ -16,7 +16,6 @@ import 'package:ds_book_app/utility/widget/SliderImage.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_date_pickers/flutter_date_pickers.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:full_screen_image/full_screen_image.dart';

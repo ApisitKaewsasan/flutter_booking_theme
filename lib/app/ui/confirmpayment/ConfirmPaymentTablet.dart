@@ -22,7 +22,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -621,15 +620,15 @@ class _ConfirmPaymentTabletState extends State<ConfirmPaymentTablet> {
   Future<void> _showDialogDate() async {
     var date = DateTime.now();
 
-    showMaterialDatePicker(
-      context: context,
-      selectedDate: date,
-      onChanged: (value) {
-        setState(() {
-          _pickDate.text = DateFormat("dd/MM/yyyy").format(DateTime.parse(value.toString()));
-        });
-      },
-    );
+    // showMaterialDatePicker(
+    //   context: context,
+    //   selectedDate: date,
+    //   onChanged: (value) {
+    //     setState(() {
+    //       _pickDate.text = DateFormat("dd/MM/yyyy").format(DateTime.parse(value.toString()));
+    //     });
+    //   },
+    // );
   }
 
 
