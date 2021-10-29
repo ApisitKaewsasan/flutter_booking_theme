@@ -1,7 +1,11 @@
 # ds_book_app
 
-A new Flutter application.
-
+  - Theme booking hotel for flutter
+  - environment staging , production
+  - Bloc State Management
+  - Structured Neatly
+  - Support Dark Light mode
+  
 ## Getting Started
 
 This project is a starting point for a Flutter application.
